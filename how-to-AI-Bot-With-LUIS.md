@@ -23,7 +23,7 @@ Currently Microsoft release a several packages that helps to build bots with var
 
 * Give your project name and complete the dialog box. It initiate a project of ASP .Net Core application with minimal codes and dependency with Bot Builder Integration.
 * Build the project and run it. for verifying this all works fine. Generally all bot applications run on port 3978 on the local machine. 
-## Step3: Test with Emulator
+## Step3: Testing with Emulator
 * If you haven't installed Bot Framework Emulator, [download it from here](https://github.com/Microsoft/BotFramework-Emulator/releases/tag/v4.7.0) and install. Go to your Bot Framework Emulator and open bot from: http://localhost:3978/api/messages 
 If everything is ready, then bot will response with Hello World!
 * Reply the message with something, now bot have no longer to response. But you still get post 200 status on activity logger of your emulator. That means the request was accepted. 
@@ -248,7 +248,7 @@ switch (luisResult.TopIntent().intent)
 
 * From your ```OnMessageActivityAsync``` remove reply component and Use logger if required anythoing to acknowledgement.
 
-## Step14: Re-Building Project and Test on Emulator
+## Step14: Re-Building Project and Testing on Emulator
 * Now rebuild your project and run. 
 * Test with your Bot Framework Emulator, enjoy.
 
