@@ -26,11 +26,11 @@ Currently Microsoft release a several packages that helps to build bots with var
 ## Step3: Testing with Emulator
 * If you haven't installed Bot Framework Emulator, [download it from here](https://github.com/Microsoft/BotFramework-Emulator/releases/tag/v4.7.0) and install. Go to your Bot Framework Emulator and open bot from: http://localhost:3978/api/messages 
 If everything is ready, then bot will response with Hello World!
-* Reply the message with something, now bot have no longer to response. But you still get post 200 status on activity logger of your emulator. That means the request was accepted. 
+* Reply the message with something, now bot have no longer to response. But you still get a post 200 status response in activity logger of your emulator. That means the request was accepted. 
 ## Step4: Enabling Response on Message
 * To get the response, back to Visual Studio and open your C sharp bot file. On empty project, generally it stands on project folder and named with your [ProjectName].cs, open it and find your class named ```EmptyBot``` who inherits bot activity Handler, ```ActivityHandler```. Here you find the overridden method of OnMembersAddedAsync who responsible for your Welcome message on first request. 
 * If required, use refatoring tool to rename the class ```EmptyBot``` with desired bot name. Note: _if you follow this procedure, you have to resolve the dependancy registering service for your Bot inside your_ ```Startup.cs``` _file._
-* On this class override another method from ```ActivityHandler``` named ```OnMessageActivityAsync``` with samples goes here: 
+* On this bot activity class, override another method from ```ActivityHandler``` named ```OnMessageActivityAsync``` with samples goes here: 
  ```
 protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
 {
