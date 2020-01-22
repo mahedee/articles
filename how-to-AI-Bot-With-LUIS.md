@@ -246,7 +246,7 @@ switch (luisResult.TopIntent().intent)
 }
 ```
 
-* From your ```OnMessageActivityAsync``` remove reply component and Use logger if required anythoing to acknowledgement.
+* From your ```OnMessageActivityAsync``` remove reply component and use the logger if required anythoing to acknowledge.
 
 ## Step14: Re-Building Project and Testing on Emulator
 * Now rebuild your project and run. 
