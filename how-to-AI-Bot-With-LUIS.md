@@ -12,7 +12,7 @@ Currently Microsoft release a several packages that helps to build bots with var
 
 ### Required Tools and Knowledge:
 *	Visual Studio 2017 or later
-*	Bot Framework Emulator
+*	[Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/tag/v4.7.0)
 *	LUISGen in .NET Cognitive Model Generator  for LUIS 
 ## Step1:
 * First go to Visual Studio marketplace and download: [Bot Framework v4 SDK Templates for Visual Studio](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) and install the templates on your visual Studio.
