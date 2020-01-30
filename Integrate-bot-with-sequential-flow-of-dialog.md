@@ -66,6 +66,6 @@ services.AddSingleton(conversationState);
 
 Go to the Solution Explorer of Visual Studio. Right click on your project and hit Manage NuGet Packeges. From the NuGet Package Manager of your project, install the following packages:
 
-__Microsoft.Bot.Builder.Dialogs__ which have dependency on LUIS Runtime.
+__Microsoft.Bot.Builder.Dialogs__ which have responsible for component dialog.
  
 ![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT007.png "NuGet Packege Selector V2")
