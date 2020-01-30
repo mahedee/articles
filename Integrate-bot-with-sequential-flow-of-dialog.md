@@ -9,8 +9,8 @@ Without maintainig a sequential flow in chat bot, the conversation will not able
 ### In this article, you will learn how to
 
 * Gather and save the bot states: conversation and user
-* Upgrade simple bot into dialog bot
-* Maintain sequential flow of dialogs
+* Upgrade simple bot into Dialog bot
+* Maintain sequential flow of Dialogs
 
 ### Required Tools
 
@@ -30,7 +30,7 @@ Before proceeding with this article, please procced our [previous article from h
 
 * Go to the Solution Explorer of Visual Studio. Right click on your project and hit Manage NuGet Packeges. From the NuGet Package Manager of your project, install the following packages:
 
-__Microsoft.Bot.Builder.Dialogs__ which have responsible for component dialogs.
+__Microsoft.Bot.Builder.Dialogs__ which have responsible for component Dialogs.
 
 ![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT007.png "NuGet Packege Selector V2")
 
@@ -100,7 +100,7 @@ where T: Dialog
 ```
 
 * Declare more following objects inside your Bot activity class:
-  * One Dialog for componet dialog
+  * One Dialog for componet Dialog
   * two Bot State:
     * one for Conversation state, and
     * another Bot State For User state.
@@ -108,18 +108,43 @@ where T: Dialog
 ```C#
 private readonly BotState _conversationState;
 private readonly BotState _userState;
-private readonly Dialog _dialog;
+private readonly Dialog _Dialog;
 ```
 
-* Initiate them in constructor of your bot activity class with other dependencies. [_Consider now we have to use the Language Understanding (LUIS) inside the component dialog, So we can remove it's declaration form Activity Class_]
+* Initiate them in constructor of your bot activity class with other dependencies. [_Consider now we have to use the Language Understanding (LUIS) inside the component Dialog, So we can remove it's declaration form Activity Class_]
 
 ```C#
-public HABotActivity(T dialog, ILogger<HABotActivity<T>> logger, ConversationState conversationState, UserState userState)
+public HABotActivity(T Dialog, ILogger<HABotActivity<T>> logger, ConversationState conversationState, UserState userState)
 {
     Logger = logger;
     _conversationState = conversationState;
     _userState = userState;
-    _dialog = dialog;
+    _Dialog = Dialog;
+}
+```
+
+* Override asynchronously another method named ```OnTurnAsync()``` from ```ActivityHandeler```, where you have to save the changes occurs in User State and Conversation State within your message activity.
+
+```C#
+public override async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+{
+    await base.OnTurnAsync(turnContext, cancellationToken);
+
+    await _conversationState.SaveChangesAsync(turnContext, false, cancellationToken);
+    await _userState.SaveChangesAsync(turnContext, false, cancellationToken);
+}
+```
+
+* Within your overriden ```OnMessageActivityAsync()``` method modify the activity and await the RunAsync method of Dialog. Use Dialog state accessor with the name of Dialog state class. If required, Log your activity within your logger.
+
+```C#
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    Logger.LogInformation("Running Dialog with Message Activity.");
+
+    await _Dialog.RunAsync(turnContext,
+    _conversationState.CreateProperty<DialogState>(nameof(DialogState)),
+    cancellationToken);
 }
 ```
 
@@ -152,3 +177,134 @@ services.AddSingleton(conversationState);
 services.AddSingleton<SequenceDialog>();
 services.AddTransient<IBot, HABotActivity<SequenceDialog>>();
 ```
+
+## Step7: Designing Dialog handles for the sequential flow of Dialog
+
+* Go to constructor of your componet Dialog class which created in step 4. There are available various type of Dialog flow. The simplest flow is considered as WaterfallDialog. Here we are going to implement waterfall Dialog.
+* Firstly create a list/array [Must be accessable with IEnumerable] of waterfall step
+
+```C#
+IList<WaterfallStep> waterfallSteps = new List<WaterfallStep>();
+```
+
+* Now we have to save the names for various type of Dialog which we have to use in prompt option for collectiong user message. Because we are using LUIS, so only text prompt is enough. But, for accessing flexibility of confirm prompt, choice prompt etc. we have to save these name. Before all, we save the name of Waterfall Dialog and after saving these names, we set initial Dialog id with name of waterfall to run the initial child Dialog.
+
+```C#
+AddDialog(new WaterfallDialog(nameof(WaterfallDialog), waterfallSteps));
+AddDialog(new TextPrompt(nameof(TextPrompt)));
+AddDialog(new DateTimePrompt(nameof(DateTimePrompt)));
+AddDialog(new NumberPrompt<int>(nameof(NumberPrompt<int>)));
+AddDialog(new ChoicePrompt(nameof(ChoicePrompt)));
+AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
+AddDialog(new AttachmentPrompt(nameof(AttachmentPrompt)));
+InitialDialogId = nameof(WaterfallDialog);
+```
+
+## Step7: Designing Dialog activities for the sequential flow of Dialog
+
+* Go to your componet Dialog class and create an asynchronous method who will be first element of the dialog. Because this activity will run when user send request for message on first time, so without any data driven operation, send prompt for user input.
+
+```C#
+private static async Task<DialogTurnResult> AppointStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+{
+    IList<Choice> choices = new List<Choice>
+    {
+        new Choice("Doctor Booking"),
+        new Choice("Renewal Prescription"),
+        new Choice("Nurse Booking")
+    };
+    return await stepContext.PromptAsync(nameof(TextPrompt),
+        new PromptOptions
+        {
+            Prompt = (Activity) ChoiceFactory.ForChannel(stepContext.Context.Activity.ChannelId,choices,"Please tell me how can I help you today?","Please tell me how can I help you today?", default )
+        }, cancellationToken);
+}
+```
+
+* Within Data driven operation, Design other activities asynchronously. Here you can use LUIS to recognizig intents or expected entities from received data. Use ```stepContext.Context.SendActivity``` to send non prompt messages. Use ```stepContext.Value["keyName"]``` to store the step data.
+
+```C#
+var luisResult = await _luisRecognizer.RecognizeAsync<Luis.HABot>(stepContext.Context, cancellationToken);
+if (luisResult?.Entities?.appointOptions?.FirstOrDefault() != null)
+{
+    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Definitely I can help you with that."), cancellationToken);
+
+    stepContext.Values["Appoint"] = luisResult?.Entities?.appointOptions?.FirstOrDefault()?.FirstOrDefault();
+}
+```
+
+* Here two activity factors are used widely. ```ChoiceFactory``` and ```MessageFactory```. Use Messsagefactory when you send only text send for text prompt.
+
+```C#
+return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions
+{
+    Prompt = MessageFactory.Text("Can you just confirm your name?", inputHint: InputHints.ExpectingInput)
+}, cancellationToken);
+  ```
+
+* Use ChoiceFactory when suggest user to selcet from a list for choice prompt. You have to use FoundChoice for retrieving data on the next step.
+
+```C#
+return await stepContext.PromptAsync(nameof(ChoicePrompt),
+new PromptOptions
+{
+    Prompt = MessageFactory.Text("Please enter your mode of transport."),
+    Choices = ChoiceFactory.ToChoices(new List<string> { "Car", "Bus", "Bicycle" }),
+}, cancellationToken);
+```
+
+* To use ChoiceFactory as option of text prompt, such as accept both from your text and choice, Use ```ChoiceFactory.ForChannel``` and pass parameter as channel id from ```stepContext.Context.Activity.ChannelId```. You have to cast MessageActivity into Activity. For speaking features, use same text to perameter of speak. Also set prompt option to default.
+
+```C#
+return await stepContext.PromptAsync(nameof(TextPrompt),
+new PromptOptions
+{
+    Prompt  = (Activity) ChoiceFactory.ForChannel(stepContext.Context.Activity.ChannelId,new List<Choice>
+    {
+        new Choice("Deen Mohammad"),
+        new Choice("Ranajit Kumar"),
+        new Choice("Bakhtiar Al Mamun"),
+        new Choice("Sadia Suravi")
+    }, $"Please select from the available doctors.",
+    $"Please select from the available doctors.",default),
+}, cancellationToken);
+```
+
+* Use confirm prompt where you have to use ony aggrement of YES or NO. Use Input Hints to control automatic enabling the microphone/text input cursor.
+
+```C#
+return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions
+{
+    Prompt = MessageFactory.Text("Did you take any pill?", inputHint: InputHints.ExpectingInput)
+}, cancellationToken);
+```
+
+* Remember, for retrieving data of previous step's prompt in current step, Use appropriate csating such as, bool for Confirm prompt, string for Text prompt and FoundChoice For Choice prompt. Atherwise you have to thrown in exception of Activity Adapter.
+
+* On the last step, aggregate all step data from the dictionaries ```stepContext.Value``` and set it to User Profile. Use your user profile accessor object to access user profile.
+
+```C#
+var userProfile = await _userProfileAccessor.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
+
+if (userProfile != null)
+{
+    userProfile.Name = (string)stepContext.Values["Name"];
+    userProfile.DateOfBirth = (string)stepContext.Values["DateOfBirth"];
+}
+```
+
+* After all data driven operation, return await the end of current Dialog from the last step
+
+```C#
+return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
+```
+
+## Step8: Creating sequence of flow for Dialog
+
+* Go to constructor of your componet Dialog class again. Now Add sequntially the dialog activities to the list of waterfall step that initiated in step 7 of this article.
+* If requird to access step index in any activities, use ```stepContext.ActiveDialog.State["stepIndex"]```.
+
+## Step9: Rebuilding project and run
+
+* Now review your code and build the project again. For sample source code please go to [microsoft samples](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/05.multi-turn-prompt) and browse dialogs directory.
+* Test with your Bot Framework Emulator, enjoy.
