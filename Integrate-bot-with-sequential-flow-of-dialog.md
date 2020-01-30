@@ -299,7 +299,7 @@ if (userProfile != null)
 return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
 ```
 
-## Step8: Creating sequence of flow for Dialog
+## Step8: Creating the sequence of flow for the Dialog
 
 * Go to constructor of your componet Dialog class again. Now Add sequntially the dialog activities to the list of waterfall step that initiated in step 7 of this article.
 * If requird to access step index in any activities, use ```stepContext.ActiveDialog.State["stepIndex"]```.
