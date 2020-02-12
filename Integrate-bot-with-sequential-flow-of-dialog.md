@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Without maintaining a sequential flow in chat bot, the conversation will not able to fullfil the goal of communication within clients. This article demonstrate how to implement a sequential conversation flow by using Dialog Components.
+Any conversation between service provider and client always goes by following a sequence of dialogs step by step. Without maintaining a sequential flow in chat bot, the conversation will not able to fullfil the goal of communication within clients. This article demonstrate how to implement a sequential conversation flow by using Dialog Components.
 
 ## Objectives
 
