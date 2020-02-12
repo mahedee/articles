@@ -42,14 +42,17 @@ If everything is ready, then bot will response with Hello World!
 ## Step4: Enabling Response on Message
 
 * To get the response, back to Visual Studio and open your C sharp bot file. On empty project, generally it stands on project folder and named with your [ProjectName].cs, open it and find your class named ```EmptyBot``` who inherits bot activity Handler, ```ActivityHandler```. Here you find the overridden method of OnMembersAddedAsync who responsible for your Welcome message on first request.
-* If required, use refatoring tool to rename the class ```EmptyBot``` with desired bot name. Note: _if you follow this procedure, you have to resolve the dependancy registering service for your Bot inside your_ ```Startup.cs``` _file._
+* If required, use refactoring tool to rename the class ```EmptyBot``` with desired bot name. Note: _if you follow this procedure, you have to resolve the dependency registering service for your Bot inside your_ ```Startup.cs``` _file._
 * On this bot activity class, override another method from ```ActivityHandler``` named ```OnMessageActivityAsync``` with samples goes here:
 
  ```C#
-protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+public class HealthAssistantBot : ActivityHandler
 {
-    var replyText = $"Echo: {turnContext.Activity.Text}";
-    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+    {
+        var replyText = $"Echo: {turnContext.Activity.Text}";
+        await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    }
 }
  ```
 
@@ -79,28 +82,28 @@ protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivi
 ![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT003.png "LUISGen in .NET CLI")
 
 * For further documentation, please review [LUISGen Documentation](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen/src/npm/readme.md). Now the cognitive model is ready for deploy.
-* Open Solution Explorer for your project in Visual Studio and check the new generated C# Cognitive Model. If you faced any error inside the C# model file, Use refactoring/rename it by following correct convention and replace all of it's refarances.
+* Open Solution Explorer for your project in Visual Studio and check the new generated C# Cognitive Model. If you faced any error inside the C# model file, Use refactoring/rename it by following correct convention and replace all of it's references.
 
 ## Step7: Installing NuGet Packages
 
-* Go to the Solution Explorer of Visual Studio. Right click on your project and hit Manage NuGet Packeges. From the NuGet Package Manager of your project, install these packages:
+* Go to the Solution Explorer of Visual Studio. Right click on your project and hit Manage NuGet Packages. From the NuGet Package Manager of your project, install these packages:
 
     __Microsoft.Bot.Builder.AI.LUIS__ which have dependency on LUIS Runtime.
 
-![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT004.png "NuGet Packege Selector 1")
+![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT004.png "NuGet Package Selector 1")
 
 * Hence we create project from Bot Framework Sdk template, so it already installed the Integration for ASP .Net Core.
 * If you need any of Data Type Recognizer within cognitive model, Please install them.
 For example: I have installed __Microsoft.Recognizers.Text.DataTypes.TimexExpression__
 
-![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT005.png "NuGet Packege Selector 2")
+![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT005.png "NuGet Package Selector 2")
 
 * Now verify your package references for confirming all required package are installed successfully.
 
 ## Step8: Configuring LUIS API
 
-* From the solution explorer, Go to your appsettings.json file and include configuration for your LUIS app:
- your __Application Id__, __API Key__ and __Application Host Name__ that you retrieved in Step5. Samples Goes here, Oviously you have to replace the AppId, APIKey and HostName.
+* From the solution explorer, Go to your ```appsettings.json``` file and include configuration for your LUIS app:
+ your __Application Id__, __API Key__ and __Application Host Name__ that you retrieved in Step5. Samples Goes here, Obviously you have to replace the AppId, APIKey and HostName.
 
  ```JSON
 {
@@ -114,16 +117,19 @@ For example: I have installed __Microsoft.Recognizers.Text.DataTypes.TimexExpres
 
 ## Step9: Designing Recognizer for LUIS Model
 
-* Design a recognizer class for your LUIS model that inherits Microsoft.Bot.Builder.IRecognizer, Here you have to implements two missing members
+* To apply the functionalities of Language Understanding(LUIS), now we have to design a recognizer who responsible for sending request with your activity message to cognitive service endpoint and fetch the matching scores for entities and intents for the instance. Design a recognizer class for your LUIS model that inherits Microsoft.Bot.Builder.IRecognizer, Here you have to implements two missing members
 ```Task<T> RecognizeAsync<T>()``` and
 ```Task<RecognizerResult> RecognizeAsync()```.
 * Before implementing these missing members, create a readonly object for ```LuisRecognizer```.
 
 ```c#
-private readonly LuisRecognizer _recognizer;
+public class HealthAssistantRecognizer : IRecognizer
+{
+    private readonly LuisRecognizer _recognizer;
+}
 ```
 
-* Before using the LUISRecognizer object, create a constructor for your recognizer class with parameter of IConfiguration. Here you have to check LUIS configurations what you configure in appsettings.json. Load the configurations and initiate a LUIS application from it.
+* Before using the LUISRecognizer object, create a constructor for your recognizer class with parameter of IConfiguration. Here you have to check LUIS configurations what you configure in ```appsettings.json```. Load the configurations and initiate a LUIS application from it.
 * By this LUIS application inside your constructor, create a LUIS recognizer option and set prediction options with instance. Currently V3 prefer to V4.
 * With this LUIS recognizer option, initiate the readonly object of ```LuisRecognizer```.
 
@@ -172,7 +178,7 @@ public virtual bool IsConfigured => _recognizer != null;
 
 ## Step10: Registering Service for Recognizer Class Dependency
 
-* Go to your __Startup__ file, and resolve the dependency injection in services.
+* Go to your __Startup__ class, and resolve the dependency injection in services.
 * Register your Recognizer class with a Singleton service.
 
  ```C#
@@ -218,7 +224,7 @@ public HealthAssistantBot(HealthAssistantRecognizer luisRecognizer, ILogger<Heal
 
 ## Step13: Modifying Bot Activity with Recognizer
 
-* Inside your ```OnMessageActivityAsync``` of bot activity class, use the recognizer to recognize data from LUIS through the cognitive model genarated by LUISGen on the last of Step6. Store result inside a local variable.
+* Inside your ```OnMessageActivityAsync``` of bot activity class, use the recognizer to recognize data from LUIS through the cognitive model generated by LUISGen on the last of Step6. Store result inside a local variable.
 
 ```C#
 var luisResult = await _luisRecognizer.RecognizeAsync<HealthAssistant>(turnContext, cancellationToken);
@@ -239,7 +245,7 @@ if (luisResult.TopIntent().intent == HealthAssistant.Intent.DiscoverDrugs)
 }
 ```
 
-* From the result, use your logic to present data. If required further processing more, do this asyncronusly. Or simply Re initiate your bot state.
+* From the result, use your logic to present data. If required further processing more, do this asynchronously. Or simply Re initiate your bot state.
 For example:
 
 ```C#
@@ -273,11 +279,11 @@ switch (luisResult.TopIntent().intent)
 }
 ```
 
-* From your ```OnMessageActivityAsync``` remove reply component and use the logger if required anythoing to acknowledge.
+* From your ```OnMessageActivityAsync``` remove reply component and use the logger if required anything to acknowledge.
 
 ## Step14: Re-Building Project and Testing on Emulator
 
-* Now rebuild your project and run. 
+* Now rebuild your project and run.
 * Test with your Bot Framework Emulator, enjoy.
 
 ![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT006.png "Bot Framework Emulator")

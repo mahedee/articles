@@ -1,8 +1,8 @@
-# Integate Bot with Sequential Flow of Dialog
+# Integrate Bot with Sequential Flow of Dialog
 
 ## Introduction
 
-Without maintainig a sequential flow in chat bot, the conversation will not able to fullfil the goal of communication within clients. This article demonstrate how to ipmlement a sequntial conversation flow by using Dialog Components.
+Without maintaining a sequential flow in chat bot, the conversation will not able to fullfil the goal of communication within clients. This article demonstrate how to implement a sequential conversation flow by using Dialog Components.
 
 ## Objectives
 
@@ -14,25 +14,25 @@ Without maintainig a sequential flow in chat bot, the conversation will not able
 
 ### Required Tools
 
-Before proceeding with this article, please procced our [previous article from here](https://github.com/mahedee/Articles/blob/master/how-to-AI-Bot-With-LUIS.md) and complete the task for the implemention of a basic chat bot with LUIS.
+Before proceeding with this article, please proceed our [previous article from here](https://github.com/mahedee/Articles/blob/master/how-to-AI-Bot-With-LUIS.md) and complete the task for the implementation of a basic chat bot with LUIS.
 
 * Visual Studio 2017 or later
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/tag/v4.7.0)
 
-## Step1: Creeating a Basic Bot with LUIS
+## Step1: Creating a Basic Bot with LUIS
 
-* First go to our [previous article from here](https://github.com/mahedee/Articles/blob/master/how-to-AI-Bot-With-LUIS.md) and install the requred tools.
+* First go to our [previous article from here](https://github.com/mahedee/Articles/blob/master/how-to-AI-Bot-With-LUIS.md) and install the required tools.
 * From your Visual Studio, create a simple Bot from the template.
 * Integrate it with LUIS and complete the required tasks described on the article.
-* Test it on Emulator and ensure about sucessesful implementation.
+* Test it on Emulator and ensure about successful implementation.
 
 ## Step2: Installing Bot Builder Dialog from NuGet
 
-* Go to the Solution Explorer of Visual Studio. Right click on your project and hit Manage NuGet Packeges. From the NuGet Package Manager of your project, install the following packages:
+* Go to the Solution Explorer of Visual Studio. Right click on your project and hit Manage NuGet Packages. From the NuGet Package Manager of your project, install the following packages:
 
 __Microsoft.Bot.Builder.Dialogs__ which have responsible for component Dialogs.
 
-![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT007.png "NuGet Packege Selector V2")
+![alt text](https://github.com/mahedee/Articles/raw/master/img/BOT007.png "NuGet Package Selector V2")
 
 ## Step3: Creating Models for User Profile and Conversation Data
 
@@ -63,9 +63,9 @@ public class UserProfile
 
 * Inside your project directory, create another sub directory named __Dialogs__. Create a new Class for Dialog who inherits ```ComponentDialog``` of Bot Builder Dialog.
 
-* Declare an object of State property accessor for accessing user profile. You have to pass the User Profile model creted in previous step for this.
-* If you use the language understunding (LUIS), declare another object for Recognizer.
-* Initaite them with constructor for this Dialog class.
+* Declare an object of State property accessor for accessing user profile. You have to pass the User Profile model created in previous step for this.
+* If you use the language understanding (LUIS), declare another object for Recognizer.
+* Initiate them with constructor for this Dialog class.
 
 ```C#
 public class SequenceDialog : ComponentDialog
@@ -86,7 +86,7 @@ public class SequenceDialog : ComponentDialog
 
 * Go to your C sharp bot file (generally it stands on project folder and named with your [ProjectName].cs).
 
-[_Because you use ASP .NET Core as the tergeted framework of your application, you can transfer it now inside a sub directory named __Bots__. Please consider, if you transfer, please fix it's namespace as well as inside pre processing of the startup file. If you not interested, it's ok until you create another bot file._]
+[_Because you use ASP .NET Core as the targeted framework of your application, you can transfer it now inside a sub directory named __Bots__. Please consider, if you transfer, please fix it's namespace as well as inside pre processing of the startup file. If you not interested, it's ok until you create another bot file._]
 
 * Change the class declaration of your bot activity class. Use generic type, where type is Dialog
 
@@ -100,7 +100,7 @@ where T: Dialog
 ```
 
 * Declare more following objects inside your Bot activity class:
-  * One Dialog for componet Dialog
+  * One Dialog for component Dialog
   * two Bot State:
     * one for Conversation state, and
     * another Bot State For User state.
@@ -111,7 +111,7 @@ private readonly BotState _userState;
 private readonly Dialog _Dialog;
 ```
 
-* Initiate them in constructor of your bot activity class with other dependencies. [_Consider now we have to use the Language Understanding (LUIS) inside the component Dialog, So we can remove it's declaration form Activity Class_]
+* Initiate them in constructor of your bot activity class with other dependencies. [_Consider now we have to use the Language Understanding (LUIS) inside the component Dialog, So we can remove it's declaration from Activity Class_]
 
 ```C#
 public HABotActivity(T Dialog, ILogger<HABotActivity<T>> logger, ConversationState conversationState, UserState userState)
@@ -123,7 +123,7 @@ public HABotActivity(T Dialog, ILogger<HABotActivity<T>> logger, ConversationSta
 }
 ```
 
-* Override asynchronously another method named ```OnTurnAsync()``` from ```ActivityHandeler```, where you have to save the changes occurs in User State and Conversation State within your message activity.
+* Override asynchronously another method named ```OnTurnAsync()``` from ```ActivityHandler```, where you have to save the changes occurs in User State and Conversation State within your message activity.
 
 ```C#
 public override async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
@@ -135,7 +135,7 @@ public override async Task OnTurnAsync(ITurnContext turnContext, CancellationTok
 }
 ```
 
-* Within your overriden ```OnMessageActivityAsync()``` method modify the activity and await the RunAsync method of Dialog. Use Dialog state accessor with the name of Dialog state class. If required, Log your activity within your logger.
+* Within your overridden ```OnMessageActivityAsync()``` method modify the activity and await the RunAsync method of Dialog. Use Dialog state accessor with the name of Dialog state class. If required, Log your activity within your logger.
 
 ```C#
 protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
@@ -180,14 +180,14 @@ services.AddTransient<IBot, HABotActivity<SequenceDialog>>();
 
 ## Step7: Designing Dialog handles for the sequential flow of Dialog
 
-* Go to constructor of your componet Dialog class which created in step 4. There are available various type of Dialog flow. The simplest flow is considered as WaterfallDialog. Here we are going to implement waterfall Dialog.
-* Firstly create a list/array [Must be accessable with IEnumerable] of waterfall step
+* Go to constructor of your component Dialog class which created in step 4. There are available various type of Dialog flow. The simplest flow is considered as WaterfallDialog. Here we are going to implement waterfall Dialog.
+* Firstly create a list/array [Must be accessible with IEnumerable] of waterfall step
 
 ```C#
 IList<WaterfallStep> waterfallSteps = new List<WaterfallStep>();
 ```
 
-* Now we have to save the names for various type of Dialog which we have to use in prompt option for collectiong user message. Because we are using LUIS, so only text prompt is enough. But, for accessing flexibility of confirm prompt, choice prompt etc. we have to save these name. Before all, we save the name of Waterfall Dialog and after saving these names, we set initial Dialog id with name of waterfall to run the initial child Dialog.
+* Now we have to save the names for various type of Dialog which we have to use in prompt option for collections user message. Because we are using LUIS, so only text prompt is enough. But, for accessing flexibility of confirm prompt, choice prompt etc. we have to save these name. Before all, we save the name of Waterfall Dialog and after saving these names, we set initial Dialog id with name of waterfall to run the initial child Dialog.
 
 ```C#
 AddDialog(new WaterfallDialog(nameof(WaterfallDialog), waterfallSteps));
@@ -202,7 +202,7 @@ InitialDialogId = nameof(WaterfallDialog);
 
 ## Step7: Designing Dialog activities for the sequential flow of Dialog
 
-* Go to your componet Dialog class and create an asynchronous method who will be first element of the dialog. Because this activity will run when user send request for message on first time, so without any data driven operation, send prompt for user input.
+* Go to your component Dialog class and create an asynchronous method who will be first element of the dialog. Because this activity will run when user send request for message on first time, so without any data driven operation, send prompt for user input.
 
 ```C#
 private static async Task<DialogTurnResult> AppointStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -221,7 +221,7 @@ private static async Task<DialogTurnResult> AppointStepAsync(WaterfallStepContex
 }
 ```
 
-* Within Data driven operation, Design other activities asynchronously. Here you can use LUIS to recognizig intents or expected entities from received data. Use ```stepContext.Context.SendActivity``` to send non prompt messages. Use ```stepContext.Value["keyName"]``` to store the step data.
+* Within Data driven operation, Design other activities asynchronously. Here you can use LUIS to recognizing intents or expected entities from received data. Use ```stepContext.Context.SendActivity``` to send non prompt messages. Use ```stepContext.Value["keyName"]``` to store the step data.
 
 ```C#
 var luisResult = await _luisRecognizer.RecognizeAsync<Luis.HABot>(stepContext.Context, cancellationToken);
@@ -233,7 +233,7 @@ if (luisResult?.Entities?.appointOptions?.FirstOrDefault() != null)
 }
 ```
 
-* Here two activity factors are used widely. ```ChoiceFactory``` and ```MessageFactory```. Use Messsagefactory when you send only text send for text prompt.
+* Here two activity factors are used widely. ```ChoiceFactory``` and ```MessageFactory```. Use MessageFactory when you send only text send for text prompt.
 
 ```C#
 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions
@@ -242,7 +242,7 @@ return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions
 }, cancellationToken);
   ```
 
-* Use ChoiceFactory when suggest user to selcet from a list for choice prompt. You have to use FoundChoice for retrieving data on the next step.
+* Use ChoiceFactory when suggest user to select from a list for choice prompt. You have to use FoundChoice for retrieving data on the next step.
 
 ```C#
 return await stepContext.PromptAsync(nameof(ChoicePrompt),
@@ -253,7 +253,7 @@ new PromptOptions
 }, cancellationToken);
 ```
 
-* To use ChoiceFactory as option of text prompt, such as accept both from your text and choice, Use ```ChoiceFactory.ForChannel``` and pass parameter as channel id from ```stepContext.Context.Activity.ChannelId```. You have to cast MessageActivity into Activity. For speaking features, use same text to perameter of speak. Also set prompt option to default.
+* To use ChoiceFactory as option of text prompt, such as accept both from your text and choice, Use ```ChoiceFactory.ForChannel``` and pass parameter as channel id from ```stepContext.Context.Activity.ChannelId```. You have to cast MessageActivity into Activity. For speaking features, use same text to parameter of speak. Also set prompt option to default.
 
 ```C#
 return await stepContext.PromptAsync(nameof(TextPrompt),
@@ -270,7 +270,7 @@ new PromptOptions
 }, cancellationToken);
 ```
 
-* Use confirm prompt where you have to use ony aggrement of YES or NO. Use Input Hints to control automatic enabling the microphone/text input cursor.
+* Use confirm prompt where you have to use ony agreement of YES or NO. Use Input Hints to control automatic enabling the microphone/text input cursor.
 
 ```C#
 return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions
@@ -279,7 +279,7 @@ return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions
 }, cancellationToken);
 ```
 
-* Remember, for retrieving data of previous step's prompt in current step, Use appropriate csating such as, bool for Confirm prompt, string for Text prompt and FoundChoice For Choice prompt. Atherwise you have to thrown in exception of Activity Adapter.
+* Remember, for retrieving data of previous step's prompt in current step, Use appropriate casting such as, bool for Confirm prompt, string for Text prompt and FoundChoice For Choice prompt. Otherwise you have to thrown in exception of Activity Adapter.
 
 * On the last step, aggregate all step data from the dictionaries ```stepContext.Value``` and set it to User Profile. Use your user profile accessor object to access user profile.
 
@@ -301,8 +301,8 @@ return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
 
 ## Step8: Creating the sequence of flow for the Dialog
 
-* Go to constructor of your componet Dialog class again. Now Add sequntially the dialog activities to the list of waterfall step that initiated in step 7 of this article.
-* If requird to access step index in any activities, use ```stepContext.ActiveDialog.State["stepIndex"]```.
+* Go to constructor of your component Dialog class again. Now Add sequentially the dialog activities to the list of waterfall step that initiated in step 7 of this article.
+* If required to access step index in any activities, use ```stepContext.ActiveDialog.State["stepIndex"]```.
 
 ## Step9: Rebuilding project and run
 
