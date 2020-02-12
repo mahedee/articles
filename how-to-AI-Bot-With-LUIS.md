@@ -194,7 +194,7 @@ public virtual bool IsConfigured => _recognizer != null;
 ## Step11: Creating Models for Entities
 
 * If you haven't any sub directory for Models, create a sub directory named ```Models``` on your project.
-* On your project's Models directory, let�s design your models for entities. These are used to fetch data from the cognitive model. For Example:
+* On your project's Models directory, let's design your models for entities. These are used to fetch data from the cognitive model. For Example:
 
 ```C#
 public class HealthAssistantDetails
