@@ -105,16 +105,16 @@ dotnet add package Microsoft.EntityFrameworkCore.InMemory
 Now write down your model class and DBContext Class.
 Then go to the appsettings.json file add your connection strings
 
-  "ConnectionStrings": {
-    "DBConn": "Server=<server IP>;Database=<Database Name>;User Id=SA;Password=Password123;"
- }
+ > "ConnectionStrings": {
+ >   "DBConn": "Server=<server IP>;Database=<Database Name>;User Id=SA;Password=Password123;"
+ >}
 
 Here is Our’s
 
-  "ConnectionStrings": {
-    "DBConn": "Server=localhost;Database=StudentDB;User Id=SA;Password=Password123;"
+>  "ConnectionStrings": {
+>    "DBConn": "Server=localhost;Database=StudentDB;User Id=SA;Password=Password123;"
 
-  },
+> },
 
 After that go to Startup.cs file add this service for your Database Connection
 services.AddDbContext<StudentDetailContext>(options => 
@@ -177,7 +177,7 @@ Then edit the default file of sites-enable which is a folder of nginx
 sudo nano /etc/nginx/sites-enabled/default
 
 Then write down this
-server {
+`server {
 	listen 80;	
 	location / {
 	proxy_pass http://localhost:5000;
@@ -188,7 +188,7 @@ server {
 	proxy_cache_bypass $http_upgrade;
 	
 	}
-}
+}`
 
 To save that press ctr+x+y
 
@@ -205,8 +205,7 @@ sudo nano /etc/systemd/system/StudentWebAPI.service
 
 
 
-
-[Unit]
+`[Unit]
 Description=Student Dotnetcore Web API
 
 [Service]
@@ -221,9 +220,7 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 
 
 [Install]
-WantedBy=multi-user.target
-
-
+WantedBy=multi-user.target`
 
 
 
