@@ -1,10 +1,9 @@
-Introduction
 
 
-ASP.NET Core
+### ASP.NET Core
 ASP.NET Core is a free and open-source web framework, and higher performance than ASP.NET, developed by Microsoft and the community. It is a modular framework that runs on both the full .NET Framework, on Windows, and the cross-platform .NET Core.
 
-NGINX
+### NGINX
 Nginx is a web server which can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Igor Sysoev and first publicly released in 2004. A company of the same name was founded in 2011 to provide support and Nginx plus paid software.
 
 Hosting ASP.NET Core Web API on Linux with Nginx
@@ -21,7 +20,7 @@ Linux Operating System (16.04 or above)
 ASP.NET Core SDK 3.1
 VS Code
 
-Step 1 . Install Linux Operating System
+#### Step 1 . Install Linux Operating System
 
 The Ubuntu operating system is lean. As a result, installing Ubuntu on an older computer can bring it back to life. If the computer you want to install Ubuntu on doesn't have a DVD-ROM drive where you can install the operating system from a disc, you can use the Rufus USB Installer to take the ISO you download and use it to create a bootable USB Ubuntu installer. This article walks you through the process to create a bootable USB Ubuntu installer in Windows.
 
@@ -40,7 +39,7 @@ Now you can setup your Linux alongside your Windows.See Here (Dual Boot)
 For customizing the partition for Ubuntu see here (Dual Boot)
 N.B. Sometimes you may face dual Boot problem . This tutorial will help you
 
-Step 2 : Installing ASP.NET Core SDK 3.1 in Linux
+#### Step 2 : Installing ASP.NET Core SDK 3.1 in Linux
 Register Microsoft key and feed
 Before installing .NET, you'll need to:
 Register the Microsoft key.
@@ -79,12 +78,12 @@ sudo apt-get update
 sudo apt-get install aspnetcore-runtime-3.1
 
 
-Step 3: Installing VS Code for write down the code
+#### Step 3: Installing VS Code for write down the code ###
 sudo snap install --classic code
-Step 4  : Installing MS SQL Server in Linux
+####  Step 4  : Installing MS SQL Server in Linux
 For Details go to this page .
 
-Step 5 : Create Database Using Entity Framework
+#### Step 5 : Create Database Using Entity Framework
 Open your linux Terminal ,for creating a webapi use this command
 dotnet new webapi -o <ProjectName>
 My Project Name was StudentManagement.
@@ -141,7 +140,7 @@ dotnet-ef migrations add DBInitialize
 dotnet-ef database update
 If build succesful ,again go to MS SQL Extention. Disconnet the connection .Then reconnect that connection,you will see your desired table which you design in your Model Class.
 
-Step 7: Creating Controller Class
+#### Step 6: Creating Controller Class
 Asp.net Core MVC Controllers are responsible for controlling the flow of the application execution. When you make a request (means request a page) to MVC application, a controller is responsible for returning the response to that request. The controller can perform one or more actions. The controller action can return different types of action results to a particular request.
 
 Firstly we have to create environment for generating Controller Class.
@@ -163,7 +162,7 @@ dotnet run
 Then go to https://localhost:5001/WeatherForecast 
 For better view install this extention
 
-Step 8 : Installing Nginx
+#### Step 7 : Installing Nginx
 Open the terminal in Linux.Then update
 sudo apt-get update
 Then install nginx
@@ -214,7 +213,7 @@ Description=Student Dotnetcore Web API
 WorkingDirectory=/var/www/StudentWebAPI
 ExecStart=/usr/bin/dotnet /var/www/StudentWebAPI/StudentManagement.dll
 Restart=always
-# Restart service after 10 seconds if the dotnet service crashes:
+
 RestartSec=10
 KillSignal=SIGINT
 SyslogIdentifier=Student Web API
@@ -230,7 +229,7 @@ WantedBy=multi-user.target
 
 Our Nginx Configuration is done. 
 
-Step 8 - Publish our dot net core WEB API
+#### Step 8 - Publish our dot net core WEB API
 Go to your ASP.NET Core project again.
 Invoke the UseForwardedHeaders method in Startup.Configure before calling UseAuthentication or similar authentication scheme middleware. Configure the middleware to forward the X-Forwarded-For and X-Forwarded-Proto headers:
 // using Microsoft.AspNetCore.HttpOverrides;
@@ -259,7 +258,7 @@ Then publish it in our
 dotnet publish -c release -o /var/www/StudentWebAPI/
 We are all set…….
 
-Step 10
+#### Step 9 
 Running our Student Web API as service
 sudo systemctl start StudentWebAPI.service
 Then start Nginx
