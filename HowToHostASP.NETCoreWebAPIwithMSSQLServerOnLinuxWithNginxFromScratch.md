@@ -266,7 +266,8 @@ sudo nano /etc/nginx/sites-enabled/default
 ```
 Then write down this
 
-```server {
+```
+server {
 	listen 80;	
 	location / {
 	proxy_pass http://localhost:5000;
