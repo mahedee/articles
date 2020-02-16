@@ -121,45 +121,61 @@ Open this full project in VS code just write in the cmd
 ```
 code .
 ```
+![Creating Project](https://github.com/mahedee/Articles/blob/master/img/1.png)
+
 Then install two extentions
 c# and MSSL
+![c# extention in vs code](https://github.com/mahedee/Articles/blob/master/img/5.png)
 Now we are creating our model class.
 #### Model Class
 Model represents domain specific data and business logic in MVC architecture. It maintains the data of the application. Model objects retrieve and store model state in the persistance store like a database.
 Model class holds data in public properties. All the Model classes reside in the Model folder in MVC folder structure
-For this operation you need SQL Server and InMemory
+For this operation you need SQL Server and InMemory.Open VS Code Terminal.
+![Terminal VS Code](https://github.com/mahedee/Articles/blob/master/img/3.png)
 ```
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.InMemory
 ```
+![Terminal VS Code](https://github.com/mahedee/Articles/blob/master/img/4.png)
+
 Now write down your model class and DBContext Class.
-Then go to the appsettings.json file add your connection strings
-```
+Then go to the ``appsettings.json`` file add your connection strings
+```C#
  "ConnectionStrings": {
     "DBConn": "Server=<server IP>;Database=<Database Name>;User Id=SA;Password=Password123;"
  },
 ```
 Here is Our’s
-```
+```C#
   "ConnectionStrings": {
     "DBConn": "Server=localhost;Database=StudentDB;User Id=SA;Password=Password123;"
 
  },
 ```
+
+
 After that go to Startup.cs file add this service for your Database Connection
-```
+```C#
 services.AddDbContext<StudentDetailContext>(options => 
                 options.UseSqlServer(this.Configuration.GetConnectionString("DBConn")));
 ```
+![Database Connection ](https://github.com/mahedee/Articles/blob/master/img/6.png)
 Then import your model class here. Add this at top
+```
 using StudentManagement.Models;
+```
+![Import Model Class](https://github.com/mahedee/Articles/blob/master/img/7.png)
 Now go to your VS Code and open SQL Server. Add a connection there,
 
 Server: localhost
-DataBase : StudentDB
+![Server Name](https://github.com/mahedee/Articles/blob/master/img/8.png)
+DataBase : StudentDB (same wrote in the Connection Strings)
+![Database Name](https://github.com/mahedee/Articles/blob/master/img/9.png)
 Username: SA
 Password : Your Password which you set in MS SQL Server
 Profile Name : SQL Server
+Here is our SQL Server
+![Our SQL Server](https://github.com/mahedee/Articles/blob/master/img/10.png)
 
 We wrote as ours.
 
@@ -177,6 +193,7 @@ dotnet-ef migrations add DBInitialize
 dotnet-ef database update
 ```
 If build succesful ,again go to MS SQL Extention. Disconnet the connection .Then reconnect that connection,you will see your desired table which you design in your Model Class.
+![Model Database with Table](https://github.com/mahedee/Articles/blob/master/img/11.png)
 
 ### Step 6: Creating Controller Class
 
@@ -204,6 +221,7 @@ dotnet run
 ```
 Then go to https://localhost:5001/WeatherForecast 
 For better view install this [extention](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+![JSON Viewer](https://github.com/mahedee/Articles/blob/master/img/12.png)
 
 ### Step 7 : Installing Nginx
 
@@ -223,6 +241,9 @@ Then check the status
 ```
 sudo service  nginx status
 ```
+
+![Nginx Status](https://github.com/mahedee/Articles/blob/master/img/13.png)
+
 Then edit the default file of sites-enable which is a folder of nginx 
 ```
 sudo nano /etc/nginx/sites-enabled/default
@@ -321,6 +342,7 @@ dotnet publish -c release -o /var/www/StudentWebAPI/
 ```
 We are all set…….
 
+![Release our Application](https://github.com/mahedee/Articles/blob/master/img/14.png)
 ### Step 9 
 
 Running our Student Web API as service
@@ -345,6 +367,9 @@ sudo ufw allow https
 ```
 Final Checking
 Go to your controller file. Then we find the subdomain of  our desire result.
-Here Our sub domain is api/StudentDetail
+Here Our sub domain is ``api/StudentDetail``
+![Controller Class](https://github.com/mahedee/Articles/blob/master/img/16.png)
 For this request  i have to go to this url 
 >192.168.1.107/api/StudentDetail
+In your case your ip address will be different.Everyone in your LAN easily access your ip and your ASP.NET Core Web API.
+![Final](https://github.com/mahedee/Articles/blob/master/img/15.png)
