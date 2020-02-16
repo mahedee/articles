@@ -5,4 +5,4 @@ Writing tech articles
 
 * [How to Integrate AI Bot with Sequential Flow of Dialog](https://github.com/mahedee/Articles/blob/master/Integrate-bot-with-sequential-flow-of-dialog.md)
 
-* [How To Host ASP.NET Core Web API with MS SQL Server on Linux Using Nginx From Scratch ](https://github.com/mahedee/Articles/blob/master/HowToHostASP.NETCoreWebAPIwithMSSQLServerOnLinuxWithNginxFromScratch.md)
+* [How To Host ASP.NET Core Web API (CRUD Operation) with MS SQL Server on Linux Using Nginx From Scratch ](https://github.com/mahedee/Articles/blob/master/HowToHostASP.NETCoreWebAPIwithMSSQLServerOnLinuxWithNginxFromScratch.md)
