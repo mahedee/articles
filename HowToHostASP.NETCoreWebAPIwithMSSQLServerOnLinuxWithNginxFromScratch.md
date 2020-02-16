@@ -1,16 +1,16 @@
 
-# How To Host ASP.NET Core Web API with MS SQL Server on Linux with Nginx From Scratch
+# How To Host ASP.NET Core Web API (CRUD Operations) with MS SQL Server on Linux using Nginx From Scratch
 
 ## Introduction
 
 ### ASP.NET Core
-ASP.NET Core is a free and open-source web framework, and higher performance than ASP.NET, developed by Microsoft and the community. It is a modular framework that runs on both the full .NET Framework, on Windows, and the cross-platform .NET Core.
+ASP.NET Core is a free and open-source of web framework, and higher performance than ASP.NET, developed by Microsoft and the community. It is a modular framework that runs on both the full .NET Framework, on Windows, and the cross-platform .NET Core.
 
 ### NGINX
 Nginx is a web server which can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. The software was created by Igor Sysoev and first publicly released in 2004. A company of the same name was founded in 2011 to provide support and Nginx plus paid software.
 
 ## Hosting ASP.NET Core Web API on Linux with Nginx
-This guide explains setting up a production-ready ASP.NET Core environment on an Ubuntu 18.04 server.
+This guide explains setting up a production-ready ASP.NET Core environment on an Ubuntu 18.04 server. Our Web API can perform basic CRUD operations.
 
 ### In this article, you will learn how to
 * Create a simple ASP.NET Core Web API which do CRUD Operations using Entity Framework(with MS SQL Server)
@@ -22,10 +22,11 @@ This guide explains setting up a production-ready ASP.NET Core environment on an
 * Linux Operating System (16.04 or above)
 * ASP.NET Core SDK 3.1
 * VS Code
+* JSON Viewer (Chorme Extention)
 
 ### Step 1 . Install Linux Operating System
 
-The Ubuntu operating system is lean. As a result, installing Ubuntu on an older computer can bring it back to life. If the computer you want to install Ubuntu on doesn't have a DVD-ROM drive where you can install the operating system from a disc, you can use the Rufus USB Installer to take the ISO you download and use it to create a bootable USB Ubuntu installer. This article walks you through the process to create a bootable USB Ubuntu installer in Windows.
+The Ubuntu operating system is lean. As a result, installing Ubuntu on an older computer can bring it back to life. If the computer you want to install Ubuntu on  doesn't have a DVD-ROM drive where you can install the operating system from a disc, you can use the Rufus USB Installer to take the ISO you download and use it to create a bootable USB Ubuntu installer. This article walks you through the process to create a bootable USB Ubuntu installer in Windows.
 
 Full details for how to [Create Ubuntu, Linux OS Bootable USB in Windows](https://www.debugpoint.com/2018/09/how-to-create-ubuntu-linux-os-bootable-usb-in-windows)
 #### Download Links
@@ -34,13 +35,13 @@ Full details for how to [Create Ubuntu, Linux OS Bootable USB in Windows](https:
 
 Now your USB is ready to boot.
 
-- Press the Power button for your computer.
+- Press the Power button of your computer.
 - During the initial startup screen, press ESC, F1, F2, F8 or F10. (Depending on the company that created your version of BIOS, a menu may appear.)
 - When you choose to enter BIOS Setup, the setup utility page will appear.
 - Using the arrow keys on your keyboard, select the BOOT tab. All of the available system devices will be displayed in order of their boot priority. Select your USB Device
 
 Now you can setup your Linux alongside your Windows.[See Here](https://www.howtogeek.com/509508/how-to-upgrade-from-windows-7-to-linux/) (Dual Boot)
-For customizing the partition for Ubuntu [see here](https://www.partitionwizard.com/partitionmagic/install-linux-on-windows-10.html) (Dual Boot)
+For customizing the partition of Ubuntu [see here](https://www.partitionwizard.com/partitionmagic/install-linux-on-windows-10.html) (Dual Boot)
 N.B. Sometimes you may face dual Boot problem . This [tutorial](https://www.partitionwizard.com/partitionmagic/install-linux-on-windows-10.html) will help you
 
 ### Step 2 : Installing ASP.NET Core SDK 3.1 in Linux
@@ -68,7 +69,7 @@ N.B. sometimes dpkg is locked due to install two applications at a time. If dpkg
 sudo rm /var/lib/dpkg/lock 
 sudo dpkg --configure -a
 ```
-- If above two not working. [try this](https://www.tecmint.com/fix-unable-to-lock-the-administration-directory-var-lib-dpkg-lock/)
+- If above two are not working. [try this](https://www.tecmint.com/fix-unable-to-lock-the-administration-directory-var-lib-dpkg-lock/)
 #### Install the .NET Core SDK
 
 Update the products available for installation, then install the .NET Core SDK. In your terminal, run the following commands.
@@ -125,13 +126,17 @@ code .
 
 Then install two extentions
 c# and MSSL
+
 ![c# extention in vs code](https://github.com/mahedee/Articles/blob/master/img/5.png)
+
 Now we are creating our model class.
 #### Model Class
 Model represents domain specific data and business logic in MVC architecture. It maintains the data of the application. Model objects retrieve and store model state in the persistance store like a database.
 Model class holds data in public properties. All the Model classes reside in the Model folder in MVC folder structure
-For this operation you need SQL Server and InMemory.Open VS Code Terminal.
+For this operation, you need SQL Server and InMemory.Open VS Code Terminal.
+
 ![Terminal VS Code](https://github.com/mahedee/Articles/blob/master/img/3.png)
+
 ```
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.InMemory
@@ -155,31 +160,40 @@ Here is Our’s
 
 
 After that go to Startup.cs file add this service for your Database Connection
+
 ```C#
 services.AddDbContext<StudentDetailContext>(options => 
                 options.UseSqlServer(this.Configuration.GetConnectionString("DBConn")));
 ```
+
 ![Database Connection ](https://github.com/mahedee/Articles/blob/master/img/6.png)
+
 Then import your model class here. Add this at top
 ```
 using StudentManagement.Models;
 ```
 ![Import Model Class](https://github.com/mahedee/Articles/blob/master/img/7.png)
+
 Now go to your VS Code and open SQL Server. Add a connection there,
 
 Server: localhost
+
 ![Server Name](https://github.com/mahedee/Articles/blob/master/img/8.png)
+
 DataBase : StudentDB (same wrote in the Connection Strings)
+
 ![Database Name](https://github.com/mahedee/Articles/blob/master/img/9.png)
+
 Username: SA
 Password : Your Password which you set in MS SQL Server
 Profile Name : SQL Server
 Here is our SQL Server
+
 ![Our SQL Server](https://github.com/mahedee/Articles/blob/master/img/10.png)
 
 We wrote as ours.
 
-If complete you see this.
+If complete you will see this.
 Again go to your VS Code terminal.
 Now install our Entity Framework tool using this two commands
 ```
@@ -193,6 +207,7 @@ dotnet-ef migrations add DBInitialize
 dotnet-ef database update
 ```
 If build succesful ,again go to MS SQL Extention. Disconnet the connection .Then reconnect that connection,you will see your desired table which you design in your Model Class.
+
 ![Model Database with Table](https://github.com/mahedee/Articles/blob/master/img/11.png)
 
 ### Step 6: Creating Controller Class
@@ -221,6 +236,7 @@ dotnet run
 ```
 Then go to https://localhost:5001/WeatherForecast 
 For better view install this [extention](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+
 ![JSON Viewer](https://github.com/mahedee/Articles/blob/master/img/12.png)
 
 ### Step 7 : Installing Nginx
@@ -244,25 +260,26 @@ sudo service  nginx status
 
 ![Nginx Status](https://github.com/mahedee/Articles/blob/master/img/13.png)
 
-Then edit the default file of sites-enable which is a folder of nginx 
+Then edit the default file for sites-enable which is a folder of nginx 
 ```
 sudo nano /etc/nginx/sites-enabled/default
 ```
 Then write down this
-`server {
+
+```server {
 	listen 80;	
 	location / {
 	proxy_pass http://localhost:5000;
-	
 	proxy_set_header Upgrade $http_upgrade;
 	proxy_set_header Connection 'upgrade';
 	proxy_set_header Host $host;
 	proxy_cache_bypass $http_upgrade;
 	
 	}
-}`
-
+}
+```
 To save that press 
+
 >ctr+x+y
 
 Then we create our own service that run our ASP.NET Core app in local host.
@@ -311,6 +328,7 @@ Our Nginx Configuration is done.
 
 Go to your ASP.NET Core project again.
 Invoke the UseForwardedHeaders method in Startup.Configure before calling UseAuthentication or similar authentication scheme middleware. Configure the middleware to forward the X-Forwarded-For and X-Forwarded-Proto headers:
+
 ```C#
 // using Microsoft.AspNetCore.HttpOverrides;
 
@@ -343,6 +361,7 @@ dotnet publish -c release -o /var/www/StudentWebAPI/
 We are all set…….
 
 ![Release our Application](https://github.com/mahedee/Articles/blob/master/img/14.png)
+
 ### Step 9 
 
 Running our Student Web API as service
@@ -368,8 +387,13 @@ sudo ufw allow https
 Final Checking
 Go to your controller file. Then we find the subdomain of  our desire result.
 Here Our sub domain is ``api/StudentDetail``
+
 ![Controller Class](https://github.com/mahedee/Articles/blob/master/img/16.png)
-For this request  i have to go to this url 
->192.168.1.107/api/StudentDetail
-In your case your ip address will be different.Everyone in your LAN easily access your ip and your ASP.NET Core Web API.
+
+For this request  I have to go to this url 
+
+> 192.168.1.107/api/StudentDetail
+
+In this case your ip address will be different.Everyone in your LAN easily access your ASP.NET Core Web API.
+
 ![Final](https://github.com/mahedee/Articles/blob/master/img/15.png)
