@@ -1,4 +1,4 @@
-# How to Create an ASP.NET Core Web API with Entity Framework using My SQL
+# How to Create an ASP.NET Core Web API with Entity Framework using MySQL Server
 
 ## Introduction
 
@@ -13,10 +13,7 @@ ASP.NET Core is a cross-platform, high-performance, open-source framework for bu
 A Web API is an application programming interface for either a web server or a web browser. It is a web development concept, usually limited to a web application's client-side (including any web frameworks being used), and thus usually does not include web server or browser implementation details such as SAPIs or APIs unless publicly accessible by a remote web application
 
 ### What is Entity Framework?
-Entity Framework is an Object Relational Mapper (ORM) which is a type of tool that simplifies mapping between objects in your software to the tables and columns of a relational database. Entity Framework (EF) is an open source ORM framework for ADO.NET which is a part of . NET Framework.
-
-### What is ADO.NET ?
-ADO.NET is a data access technology from the Microsoft .NET Framework that provides communication between relational and non-relational systems through a common set of components. ADO.NET is a set of computer software components that programmers can use to access data and data services from a database.
+Entity Framework is an Object Relational Mapper (ORM) which is a type of tool that simplifies mapping between objects in your software to the tables and columns of a relational database.
 
 ### What is ORM ?
 Object-relational mapping in computer science is a programming technique for converting data between incompatible type systems using object-oriented programming languages. This creates, in effect, a "virtual object database" that can be used from within the programming language.
@@ -36,7 +33,7 @@ This guide explains setting up a production-ready ASP.NET Core Web API using Ent
 ### Required Tools
 * ASP.NET Core
 * Virtual Studio 2019
-* My SQL Workbench
+* MySQL Workbench
 * Postman
 
 
@@ -321,7 +318,7 @@ Now go to controller class named `StudentDetailsController.cs` for getting your 
 
 Here Our sub domain is ``api/StudentDetails``
 
-![Controller Class](https://github.com/mahedee/Articles/blob/master/img/50.png)
+![Controller Class](https://github.com/mahedee/Articles/blob/master/img/50.PNG)
 
 Now 
 * build your project and run.
