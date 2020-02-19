@@ -7,4 +7,4 @@ Writing tech articles
 
 * [How To Host ASP.NET Core Web API (CRUD Operation) with MS SQL Server on Linux Using Nginx From Scratch ](https://github.com/mahedee/Articles/blob/master/HowToHostASP.NETCoreWebAPIwithMSSQLServerOnLinuxWithNginxFromScratch.md)
 
-* [How to Create a ASP.NET Core Web API with Entity Framework using My SQL](https://github.com/mahedee/Articles/blob/master/HowToCreateWebAPIinASP.NETCOrewitMySQL.md)
+* [How to Create an ASP.NET Core Web API with Entity Framework using My SQL](https://github.com/mahedee/Articles/blob/master/HowToCreateWebAPIinASP.NETCOrewitMySQL.md)
