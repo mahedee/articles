@@ -1,4 +1,4 @@
-# How to Create a ASP.NET Core Web API with Entity Framework using My SQL
+# How to Create an ASP.NET Core Web API with Entity Framework using My SQL
 
 ## Introduction
 
@@ -56,13 +56,13 @@ The MySQL Installer application can install, upgrade, and manage most MySQL prod
 
 ![Setup Type ](https://github.com/mahedee/Articles/blob/master/img/21.PNG "Setup Type")
 
-- Then Select `Next`
+- Then Select `Next` and click `Yes`
 
 ![Check Requirements](https://github.com/mahedee/Articles/blob/master/img/22.PNG "Check Requirements")
 
 - Then click `Execute` after downloaded all then select `Next`--> `Next` 
 
-![Execute](https://github.com/mahedee/Articles/blob/master/img/22.PNG "Execute")
+![Execute](https://github.com/mahedee/Articles/blob/master/img/23.PNG "Execute")
 
 -  Configure `Type and Networking` as `Standalone MYSQL Server`,next configure show in the below
 
@@ -214,11 +214,14 @@ In this example I will save our connection string in `appsettins.json` file, bec
     "DBConn": "Server=<Your IP>;port=3306;Database=studentdb;User Id=root;Password=1234;"
 }
 ```
-Here is our's
+Here is our's. We get our mySQL Server IP and port number from `MySQL Connection`
+
+![MySQL Connection](https://github.com/mahedee/Articles/blob/master/img/28.PNG "MySQL Connection")
+
 
 ```C#
 "ConnectionStrings": {
-    "DBConn": "Server=192.168.80.68;port=3306;Database=studentdb;User Id=root;Password=1234;"
+    "DBConn": "Server=localhost;port=3306;Database=studentdb;User Id=root;Password=1234;"
 }
 ```
 
