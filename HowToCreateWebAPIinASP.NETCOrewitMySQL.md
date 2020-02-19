@@ -317,8 +317,13 @@ We are now all set. I added some rows myself. Open `MySQL Workbench` ,then selec
 
 ![SQL Statement](https://github.com/mahedee/Articles/blob/master/img/49.PNG "SQL Statement")
 
-Now go to controller class named `StudentDetailsController.cs` for getting your apis link. Now 
+Now go to controller class named `StudentDetailsController.cs` for getting your APIs link.
 
+Here Our sub domain is ``api/StudentDetail``
+
+![Controller Class](https://github.com/mahedee/Articles/blob/master/img/16.png)
+
+Now 
 * build your project and run.
 
 Here is an example.This API works for getting details of all student,
