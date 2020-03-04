@@ -398,3 +398,6 @@ For this request  I have to go to this url
 In this case your ip address will be different.Everyone in your LAN easily access your ASP.NET Core Web API.
 
 ![Final](https://github.com/mahedee/Articles/blob/master/img/15.png)
+
+> Code
+[Here is the code of full projects](https://github.com/AtiQ-Rahman/StudentManagments)
