@@ -50,7 +50,9 @@ After downloading that-->
 - Docker starts automatically.
 - Docker loads a “Welcome” window giving you tips and access to the Docker documentation
 
-Docker Provides two Containers Linux and Windows . We will use Windows Container. We will use some experimental features. Experimental features are not ready for production. They are provided for test and evaluation in your sandbox environments. For that we will have to a little change in Docker. Firstly go to system tray.Then Press right buttor on ``Docker`` Logo ``Settings` --> `Docker Engine` --> `"experimental": true`
+Docker Provides two Containers Linux and Windows . We will use Windows Container. We will use some experimental features. Experimental features are not ready for production. They are provided for test and evaluation in your sandbox environments. For that we will have to a little change in Docker. Firstly go to system tray.Then Press right buttor on ``Docker`` Logo 
+``Settings`` --> `Docker Engine` --> ``"experimental": true``
+
 
 ![Docker Setting ](https://github.com/mahedee/Articles/blob/master/img/docker%20(6).PNG)
 
@@ -154,7 +156,7 @@ namespace WebAplicationMySQL.Models
 }
 
 ```
-## Step 6 : Configure Dependency Injection
+## Step 5 : Configure Dependency Injection
 
 Make sure this three must be include in `startup.cs` class.
 
@@ -260,7 +262,7 @@ s![MVC Controller with views](https://github.com/mahedee/Articles/blob/master/im
 
 ![Model Class and Db Context Class](https://github.com/mahedee/Articles/blob/master/img/45.PNG "Model Class and Db Context Class")
 
-## Step 7 : Migrations
+## Step 6 : Migrations
 
 If you installed EF Tools as me, than you can just run next 2 commands in Package Manager Console:
 
@@ -287,7 +289,7 @@ N.B. we don't need `update Database` command
 After a successful migration , when we Run this app,a table named `StudentDetails` in `studentdb` database
 
 
-## Step 8 : Run Our Web App in Locally
+## Step 7 : Run Our Web App in Locally
 
 go to ``Package Manager`` then type
 ```C#
@@ -351,7 +353,7 @@ Port 80 will be exposed in the container
 
 ```Dockerfile
 ENTRYPOINT ["dotnet", "WebApplicationMySQL.dll"]
-```	
+```
 The main ASP.NET Core 3.1 web application will be launched by executing ``dotnet WebApplicationMySQL.dll``
 
 We will next compose a docker yml file that orchestrates the entire system which involves two containers: a MySQL database server container and a container that holds our application. In the root folder of your application, create a text file named ``docker-compose.yml`` and add to it the following content:
@@ -384,7 +386,7 @@ services:
     - ASPNETCORE_ENVIRONMENT=Development
 
 ```
-``N.B. Indentention is a Must in yml file
+N.B. Indentention is a Must in yml file
 Below is an explanation of what this file does.
 
 We will be having two containers. Each container is considered to be a service. The first service is named db and will host MySQL. The second service is named mvc and will host our ASP.NET Core 3.1 web app.
@@ -422,21 +424,29 @@ Open the ``terminal`` of ``VS Code``. Then run this two command ,
 ``docker-compose build``
 
 ![docker-compose build](https://github.com/mahedee/Articles/blob/master/img/docker%20(24).PNG)
+
 ``docker-compose up``
+
 ![docker-compose up](https://github.com/mahedee/Articles/blob/master/img/docker%20(25).PNG)
+
 Point your browser to http://localhost:8888/ and you should see the main web page.
 
 Home Page
+
 ![WebAplicationMySQL Home page](https://github.com/mahedee/Articles/blob/master/img/docker%20(15).PNG)
 
 Our Edit Page,
+
 ![WebAplicationMySQL edit page](https://github.com/mahedee/Articles/blob/master/img/docker%20(13).PNG)
 
 After Adding One Row,
+
 ![WebAplicationMySQL Home page](https://github.com/mahedee/Articles/blob/master/img/docker%20(23).PNG)
+
 Now go to ``Docker`` . We will see our ``WebApplictionMySQL`` Image
 
 ![WebAplicationMySQL Docker Image](https://github.com/mahedee/Articles/blob/master/img/docker%20(8).PNG)
+
 Explore that image will we two containers as in the `docker-compose.yml`
 go to system tray.Then Press right button on ``Docker`` Logo.Then `Dashboard`
 
@@ -445,10 +455,12 @@ go to system tray.Then Press right button on ``Docker`` Logo.Then `Dashboard`
 ![WebAplicationMySQL Docker Containers](https://github.com/mahedee/Articles/blob/master/img/docker%20(9).PNG)
 
 ``WebAplicationMySQL_mvc_1`` container log
+
 ![WebAplicationMySQL Docker Containers](https://github.com/mahedee/Articles/blob/master/img/docker%20(10).PNG)
 
 
 ``WebAplicationMySQL_db_1`` container log
+
 ![WebAplicationMySQL Docker Containers](https://github.com/mahedee/Articles/blob/master/img/docker%20(11).PNG)
 
 
@@ -476,8 +488,14 @@ describe Studentdetails;
 Select * from Studentdetails;
 ```
 Normal ``SQL`` commands
+
 ![WebAplicationMySQL_DB_1 Container](https://github.com/mahedee/Articles/blob/master/img/docker%20(16).PNG)
 
 StudentDetails Table
+
 ![StudentDetails Table](https://github.com/mahedee/Articles/blob/master/img/docker%20(17).PNG)
+
+> Full Code
+
+[Full Project Link](https://github.com/AtiQ-Rahman/WebApplicationMySQL)
 
