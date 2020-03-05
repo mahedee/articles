@@ -9,3 +9,7 @@ I used following tools and technology to develop the project –
 2.	Visual C#
 3.	.NET Core Console Application
 4.	SQL Server Localdb
+
+### Step 1: Create a Console Application
+Create a console application and name it DataAccessConsole as follows.
+![alt text](https://github.com/mahedee/Articles/blob/master/img/DBCore-01.png "Create a Console Application")
