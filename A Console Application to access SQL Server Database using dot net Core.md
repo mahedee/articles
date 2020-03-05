@@ -65,6 +65,8 @@ Click on the "Browse" tab and search for the following packages.
 ### Step 4: Add appsettings.json file
 Add appsettings.json file in the project as configuration file
 
+![alt text](https://github.com/mahedee/Articles/blob/master/img/DBCore-04.png) 
+
 Add the followig code in the appsettings.json file. This is actually the connection string for the application
 
 *Appsettings.json*
@@ -78,13 +80,16 @@ Add the followig code in the appsettings.json file. This is actually the connect
 
 ```
 This step is very important. We need copy appsettings.json to Directory where the application will run like below.
- 
 
+![alt text](https://github.com/mahedee/Articles/blob/master/img/DBCore-05.png) 
 
-Step 5: Create Model, DAL, BLL and config class to access data
-Create AppConfig Class to get connection string.
-AppConfig.cs
+### Step 5: Create Model, DAL, BLL and config class to access data
 
+#### Create AppConfig Class to get connection string.
+
+*AppConfig.cs*
+
+```C#
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -118,10 +123,12 @@ namespace DataAccessConsole
         }
     }
 }
+```
 
+#### Create a Model class name Employee to access data of Employee table
+*Employee.cs*
 
-Create a Model class name Employee to access data of Employee table
-Employee.cs
+```C#
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -138,8 +145,14 @@ namespace DataAccessConsole
     }
 }
 
-Create EmployeeDAL to access data from database.
-EmployeeDAL.cs
+```
+
+### Create EmployeeDAL to access data from database.
+
+*EmployeeDAL.cs*
+
+```C#
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -191,9 +204,12 @@ namespace DataAccessConsole
         }
     }
 }
+```
 
-Create EmployeeBLL class. Business logic should write here.
-EmployeeBLL.cs
+#### Create EmployeeBLL class. Business logic should write here.
+*EmployeeBLL.cs*
+
+```C#
 using System.Collections.Generic;
 
 namespace DataAccessConsole
@@ -206,9 +222,12 @@ namespace DataAccessConsole
         }
     }
 }
+```
 
-Now modify Program Class as follows to display data 
-Program.cs
+#### Now modify Program Class as follows to display data 
+*Program.cs*
+
+```C#
 using System;
 using System.Collections.Generic;
 
@@ -230,8 +249,9 @@ namespace DataAccessConsole
     }
 
 }
+```
 
-Output: Now run the application and you will see the following output.
-
+### Output: Now run the application and you will see the following output.
+![alt text](https://github.com/mahedee/Articles/blob/master/img/DBCore-06.png) 
  
 
