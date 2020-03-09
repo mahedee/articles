@@ -12,7 +12,7 @@ Implementing CQRS in any application can maximize its performance, scalability a
  
  ### Design
 
- ![IMAGE](img/CQRS1.png)
+ ![IMAGE](../img/CQRS1.png)
 
 
 As you can see, Read site and Write site are separate services. Both sites consist of different application and both have different databases. In the Write site, this service is only used for writting and has no return value from database and updated data get transfered to the Queue through sender. Again in Read Site, the service is only used for reading data and always returns required result. For auto syncing, the receiver should be in listening mood. When receiver figured any data out in queue, the read database updates through receiver.
