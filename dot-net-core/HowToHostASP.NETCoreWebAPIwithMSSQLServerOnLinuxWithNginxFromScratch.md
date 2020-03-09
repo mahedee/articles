@@ -237,6 +237,10 @@ dotnet run
 Then go to https://localhost:5001/WeatherForecast 
 For better view install this [extention](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
 
+N.B. If any port is not working ,you can free that specific port.
+```sudo kill -9 $(sudo lsof -t -i:5000)```
+This command kill processes running on `5000` port
+
 ![JSON Viewer](https://github.com/mahedee/Articles/blob/master/img/12.png)
 
 ### Step 7 : Installing Nginx
