@@ -146,7 +146,7 @@ or
 dotnet watch run
 ```
 
-[customerapiresponse]
+[customerapiresponse](https://github.com/mahedee/Articles/blob/master/img/CustomerApi_Response.png)
 
 #### OrderApi
 
@@ -225,7 +225,7 @@ or
 dotnet watch run
 ```
 
-[customerapiresponse]
+[orderapiresponse](https://github.com/mahedee/Articles/blob/master/img/OrderApi_Response.png)
 
 ### Step 2
 
@@ -313,15 +313,8 @@ or
 dotnet watch run
 ```
 
-[ocelot-customer]
-[ocelot-order]
-
-
-[//]: 
-[customerapiresponse]: <../img/customerapiresponse.png>
-[orderapiresponse]: <../img/orderapiresponse.png>
-[ocelot-customer]:<../ocelot-customer.png>
-[ocelot-order]:<../ocelot-order.png>
+[ocelot-customer](https://github.com/mahedee/Articles/blob/master/img/OcelotCustomer.png)
+[ocelot-order](https://github.com/mahedee/Articles/blob/master/img/Ocelot_Order.png)
 
 
 
