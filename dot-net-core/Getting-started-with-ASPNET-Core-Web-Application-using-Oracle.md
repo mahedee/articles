@@ -53,9 +53,11 @@ Add the connection string as follows for oracle in appsettings.json
 
 ```
 
-Step 4: Create IHRMDBContex and HRMDBContex class in Context folder
-IHRMDBContext.cs
+**Step 4: Create IHRMDBContex and HRMDBContex class in Context folder**  
 
+**IHRMDBContext.cs**  
+
+```C#
 using Oracle.ManagedDataAccess.Client;
 
 namespace HRM.Web.Context
@@ -66,8 +68,11 @@ namespace HRM.Web.Context
         OracleConnection GetConn();
     }
 }
+```
 
-HRMDBContext.cs
+**HRMDBContext.cs**  
+
+```C#
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 
@@ -100,9 +105,14 @@ namespace HRM.Web.Context
     }
 }
 
+```
 
-Step 5: Create model class employee in Model folder
-Employee.cs
+
+**Step 5: Create model class employee in Model folder**  
+
+**Employee.cs** 
+
+```C#
 namespace HRM.Web.Model
 {
     public class Employee
@@ -113,8 +123,11 @@ namespace HRM.Web.Model
         public string Email { get; set; }
     }
 }
+```
 
-Step 6: Create IEmployeeRepository and EmployeeRepository class in Repository folder
+**Step 6: Create IEmployeeRepository and EmployeeRepository class in Repository folder** 
+
+```C#
 
 IEmployeeRepository.cs
 using System.Collections.Generic;
@@ -128,7 +141,11 @@ namespace HRM.Web.Repository
     }
 }
 
-EmployeeRepository.cs
+```
+
+**EmployeeRepository.cs**  
+
+```C#
 using HRM.Web.Context;
 using HRM.Web.Model;
 using Oracle.ManagedDataAccess.Client;
@@ -192,10 +209,15 @@ namespace HRM.Web.Repository
         }
     }
 }
+```
 
-Step 7: Register the classes with its interface
+**Step 7: Register the classes with its interface**
+
 Modify the Startup class as follows
-Startup.cs
+
+**Startup.cs**
+
+```C#
 using HRM.Web.Context;
 using HRM.Web.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -245,15 +267,15 @@ namespace HRM.Web
     }
 }
 
+```
 
-Step 5: Create a API controller
+**Step 5: Create a API controller** 
 Now create a controller name Employee as follows
  
-Image 06
-Now build and run the application. In the post man type the following URL and you will see the output.
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/05.png)
+
+Now build and run the application. In the post man type the following URL and you will see the output.  
+
 http://localhost:62331/api/employee
 
- 
-
-Image 6
-
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/06.png)
