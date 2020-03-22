@@ -1,8 +1,9 @@
-Getting started with ASP.NET Core Web Application using Oracle
-Project overview
+## Getting started with ASP.NET Core Web Application using Oracle
+
+**Project overview**  
 Here I create an asp.net core web application to show employee information of default hrm database of Oracle. This is actually an API application.
 
-Tools and Technology used
+**Tools and Technology used**  
 I used following tools and technology to develop the project – 
 
 1.	Visual Studio 2019
