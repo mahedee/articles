@@ -125,11 +125,10 @@ namespace HRM.Web.Model
 }
 ```
 
-**Step 6: Create IEmployeeRepository and EmployeeRepository class in Repository folder** 
+**Step 6: Create IEmployeeRepository and EmployeeRepository class in Repository folder**   
+**IEmployeeRepository.cs**
 
 ```C#
-
-IEmployeeRepository.cs
 using System.Collections.Generic;
 using HRM.Web.Model;
 
@@ -269,10 +268,10 @@ namespace HRM.Web
 
 ```
 
-**Step 5: Create a API controller** 
+**Step 5: Create a API controller**    
 Now create a controller name Employee as follows
  
-![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/05.png)
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/05.png)  
 
 Now build and run the application. In the post man type the following URL and you will see the output.  
 
