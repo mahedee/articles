@@ -235,6 +235,3 @@ http://localhost:62331/api/employee
 
 Image 6
 
-Reference:
-1.	https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/ODPNET_Core_get_started/index.html
-2.	
