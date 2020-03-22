@@ -14,11 +14,13 @@ Let’s start the project.
 
 **Step 1: Create a ASP.NET Core application**  
 Go to File->New->Project->ASP.NET Core Web Application
+
 ![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/01.png)
 
 Click Next and type the application name as “HRM.Web”
 
- 
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/02.png)
+
 Now choose API Template. Select Framework ASP.NET Core 3.0
 
  
