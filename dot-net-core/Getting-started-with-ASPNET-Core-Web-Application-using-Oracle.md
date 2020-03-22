@@ -22,18 +22,36 @@ Click Next and type the application name as “HRM.Web”
 ![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/02.png)
 
 Now choose API Template. Select Framework ASP.NET Core 3.0
-
  
-Image - 03
-Step 2: Install ODP.NET Core from Nuget.org
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/03.png)
+
+**Step 2: Install ODP.NET Core from Nuget.org**  
+
 Select Oracle.ManagedDataAccess.Core from Nuget Package Manager and Click Install
  
-Image - 04
-Step 3: Add the connection string in appsettings.json 
-Add the connection string as follows for oracle in appsettings.json
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/04.png)
+
+**Step 3: Add the connection string in appsettings.json**  
+Add the connection string as follows for oracle in appsettings.json   
+
+```JSON
+
+{
   "ConnectionStrings": {
     "DefaultConnection": "Data Source = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = MahedeePC)(PORT = 1521)))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = XE))); User Id = hr; Password = hr;"
   },
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+```
 
 Step 4: Create IHRMDBContex and HRMDBContex class in Context folder
 IHRMDBContext.cs
