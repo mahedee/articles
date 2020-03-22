@@ -9,11 +9,13 @@ I used following tools and technology to develop the project –
 1.	Visual Studio 2019
 2.	Visual C#
 3.	ASP.NET Core 3.0
+
 Let’s start the project.
 
-Step 1: Create a ASP.NET Core application
+**Step 1: Create a ASP.NET Core application**  
 Go to File->New->Project->ASP.NET Core Web Application
- 
+![alt text](https://github.com/mahedee/Articles/blob/master/img/0120/01.png)
+
 Click Next and type the application name as “HRM.Web”
 
  
