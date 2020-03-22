@@ -137,7 +137,7 @@ az webapp deployment source config-zip --resource-group "YourResourceGroupName" 
 
 * Find static pages under __wwwroot__ directory. Create a new html page.
 
-Load Sample codes that includes at least Reactive Extensions for BotChat and Cognitive Service provided by microsoft. You can get samples  [from here](https://github.com/microsoft/BotFramework-Samples/blob/master/docs-samples/web-chat-speech/index.html)
+* Load Sample codes that includes at least Reactive Extensions for BotChat and Cognitive Service provided by microsoft. You can get samples  [from here](https://github.com/microsoft/BotFramework-Samples/blob/master/docs-samples/web-chat-speech/index.html)
 
 * From the BotChat.App, replace parameter for direct line secret with your direct line secret key that you get at step 6. Or you can use JWT authentication to get token through your secret key.
 
