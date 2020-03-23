@@ -329,6 +329,7 @@ WORKDIR /app
 EXPOSE 80/tcp
 ENTRYPOINT ["dotnet", "WebApplicationMySQL.dll"]
 ```
+``In VS Code press Ctrl+Shift+P ,then you can auto generated Docker file``
 Above are instructions to create a Docker image that will contain our ASP.NET Core 3.1 application. I describe each line below:
 
 ```Dockerfile
