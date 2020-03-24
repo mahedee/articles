@@ -62,6 +62,9 @@ Our Final ``Docker Engine``
 
 Our ``Docker`` is now Ready....!
 
+You can resize your docker memeory ,space. By Going to,
+> C:\Users\UserName\AppData\Roaming\Docker\Settings.json
+
 ### Step 2. Create An ASP.NET Core Web App Using MySQL Database
 
 - From the File menu, select New > Project.
