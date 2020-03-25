@@ -92,7 +92,7 @@ Add the following code
    ....
      "AllowedHosts": "*",
   "ConnectionStrings": {
-    "QueryContext": "Server=(localdb)\\MSSQLLocalDB;Database=CommandContext;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "CommandContext": "Server=(localdb)\\MSSQLLocalDB;Database=CommandContext;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
  }
 ```
