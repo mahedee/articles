@@ -1,4 +1,4 @@
-# How to Dockerize both ASP.NET Core 3.1 and MySQL Server in Windows containers?
+# How to Dockerize both ASP.NET Core Application and MySQL Server in Windows containers?
 
 ## Introduction
 
