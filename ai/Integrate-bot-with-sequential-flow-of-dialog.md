@@ -1,4 +1,4 @@
-# Integrate Bot with Sequential Flow of Dialog
+# Integrate Sequential Flow of Dialog in Azure Bot Service
 
 ## Introduction
 
