@@ -1,4 +1,4 @@
-# How to Create an ASP.NET Core Web API with Entity Framework using MySQL Server
+# How to Create an ASP.NET Core Web API with Entity Framework using MySQL
 
 ## Introduction
 
