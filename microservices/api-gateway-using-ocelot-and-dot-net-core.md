@@ -1,4 +1,4 @@
-## Api Gateway using Ocelot
+## Developing an Api Gateway using Ocelot
 
 ### Context
 
