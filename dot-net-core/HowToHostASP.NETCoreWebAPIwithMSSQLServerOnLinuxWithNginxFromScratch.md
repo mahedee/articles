@@ -1,5 +1,5 @@
 
-# How To Host ASP.NET Core Web API (CRUD Operations) with MS SQL Server on Linux using Nginx From Scratch
+# How To Host ASP.NET Core Web API Application on Linux using Nginx with MS SQL Server
 
 ## Introduction
 
