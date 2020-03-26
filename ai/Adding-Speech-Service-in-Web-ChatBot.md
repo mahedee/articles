@@ -1,4 +1,4 @@
-# How to Add Microsoft Cognitive Speech Service in Web ChatBot
+# How to Add Azure Cognitive Speech Service in Web ChatBot
 
 ## Introduction
 
