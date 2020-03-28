@@ -63,3 +63,15 @@ Now open a branch name *feature-joining* using following command
 ```github
 git checkout -b feature-joining
 ```
+Now you will see the 
+
+```github
+Mahedee@MahedeePC MINGW64 /d/Projects/Github/OpenCodeFoundation/eSchool (feature-joining)
+```
+
+instead of 
+
+```github
+Mahedee@MahedeePC MINGW64 /d/Projects/Github/OpenCodeFoundation/eSchool (master)
+```
+
