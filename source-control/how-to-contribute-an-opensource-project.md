@@ -1,8 +1,26 @@
 ## How to contribute on an open source project
 
-To see remote repository  
+Step 1: Fork the repository on which you want to contribute  
+For example, I have forked the following repository  
+https://github.com/OpenCodeFoundation/eSchool
+
+After forking my repository has became  
+https://github.com/mahedee/eSchool
+
+Step 2: Clone your forked project  
+For example:  
+```github
+git clone https://github.com/mahedee/eSchool.git
+```
+So your remote repository is https://github.com/mahedee/eSchool.git  
+if you want to see the remote repository type 
+
 ```github
 git remote -v
 ```
+output will be like 
 
-Step 1: Fork the repository on which you want to contribute
+```github
+origin  https://github.com/mahedee/eSchool.git (fetch)
+origin  https://github.com/mahedee/eSchool.git (push)
+```
