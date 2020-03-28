@@ -32,3 +32,21 @@ Now add the original repository as origin in the local repository and name as *u
 ```github
 git remote add upstream https://github.com/OpenCodeFoundation/eSchool
 ```
+
+So you have two remote link in your local repository  
+1. origin - forked repository which is in your github  
+2. upstream - original project's repository on which you will be contributed  
+
+if you run the following command  
+
+```github
+git remote -v
+```
+you will see the following output  
+
+```github
+origin  https://github.com/mahedee/eSchool.git (fetch)
+origin  https://github.com/mahedee/eSchool.git (push)
+upstream        https://github.com/OpenCodeFoundation/eSchool (fetch)
+upstream        https://github.com/OpenCodeFoundation/eSchool (push)
+```
