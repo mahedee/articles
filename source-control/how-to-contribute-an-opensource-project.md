@@ -50,3 +50,16 @@ origin  https://github.com/mahedee/eSchool.git (push)
 upstream        https://github.com/OpenCodeFoundation/eSchool (fetch)
 upstream        https://github.com/OpenCodeFoundation/eSchool (push)
 ```
+
+**Step 4: Open a new branch in my local repository**  
+
+Before opening any branch or contributing, please run the following command to up to date your local repository  
+
+```github
+git pull upstream master
+```
+Now open a branch name *feature-joining* using following command
+
+```github
+git checkout -b feature-joining
+```
