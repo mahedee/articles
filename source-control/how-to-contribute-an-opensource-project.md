@@ -133,3 +133,13 @@ If you want to sync your forked repository with original repository at any time.
 git pull upstream master 
 git push origin master
 ```
+
+**Step 9: Delete the branch**
+After accepting or rejecting your PR. You should remove the branch. For new work, you should create a new branch. To remove the local branch type the following command  
+```github
+git branch -d feature-joining
+```
+If you want to remove this branch from github then type the following command.
+```github
+git push origin feature-joining 
+```
