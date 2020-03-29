@@ -58,6 +58,23 @@ Before opening any branch or contributing, please run the following command to u
 ```github
 git pull upstream master
 ```
+
+To check is there any new commit on upstream run-
+
+```github
+git status
+```
+you should see something like-  
+
+```github
+On branch master
+Your branch is behind 'upstream/master' by 14 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+nothing to commit, working tree clean
+```
+If you see, any changes in upstream, you can pull upstream to your local drive  
+
 Now open a branch name *feature-joining* using following command
 
 ```github
