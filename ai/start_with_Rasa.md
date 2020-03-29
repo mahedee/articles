@@ -1,6 +1,6 @@
 # Rasa and chatbots
 
-![alt text](https://github.com/mahedee/Articles/tree/master/imgrasa_logo.png "Rasa")
+ ![IMAGE](../img/imgrasa_logo.png "Rasa")
 
 Rasa is an open source maching learning platform for building contextual AI assistants and chatbots in text and voice. It is one of most popular framework for building chatbots. Let's start with installing Rasa, here I'm sharing the problems I faced while installing Rasa.
 
@@ -76,7 +76,7 @@ To run the project, which means chatting with the bot, you can simply run the be
 ```
 This will let you chat with the bot in the command prompt.
 
-![alt text](https://github.com/Articles/upload/master/img/rasa_shell.png "Chat with the bot in rasa shell")
+ ![IMAGE](../img/rasa_shell.png "Chat with the bot in rasa shell")
 
 You can also chat with the bot using rasa-x, just enter the command given below-
 ```
@@ -85,15 +85,15 @@ You can also chat with the bot using rasa-x, just enter the command given below-
 This will open up a webpage where you will be able to chat, train and also be able to use many other tools.
 
 *Note: Some of you might get an error after running the command, which is- "ImportError: Bad git executable." To solve this follow the instructions given below-*
-![alt text](https://github.com/Articles/upload/master/img/git_error.png "git error")
+ ![IMAGE](../img/git_error.png "git error")
 >Here you can see the error marked in red box, now let's solve this-
 >+ First copy the path similar to the yellow marked box, you have to copy the path till ..\venv\Lib\site-packages\git
 >+ Goto the copied path, and open the file named *--init--.py*. You can use any editor of your choice.
 >+ At the end of the code you will find a try-exception function, just comment out the function. Save the file. Run the command again and you are good to go. 
-![alt text](https://github.com/Articles/upload/master/img/git_solve.png "git solve")
+ ![IMAGE](../img/git_solve.png "git solve")
 
 After running the command, you might have to agree with their some policies. Then a browser will open up, where you can chat the with bot and also use other tools.
-![alt text](https://github.com/Articles/upload/master/img/rasa_x.png "git solve")
+ ![IMAGE](../img/rasa_x.png "git solve")
 
 ##### Congratulation on installing Rasa
 
