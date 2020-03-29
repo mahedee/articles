@@ -11,7 +11,7 @@ We can start with having a look at Rasa docs for installation. On the links belo
 + [Install Rasa](https://rasa.com/docs/rasa/user-guide/installation/ "Install Rasa")
 + [Install Rasa X](https://rasa.com/docs/rasa-x/0.19.5/installation-and-setup/ "Install Rasa X")
 
-Now, some of might wonder what is Rasa X and what's the difference in Rasa and Rasa X. Well, Rasa X is actually an addition to Rasa. It doesn't change any functionality of Rasa, but adds more tools to work with.
+Now, some of us might wonder what is Rasa X and what's the difference in Rasa and Rasa X. Well, Rasa X is actually an addition to Rasa. It doesn't change any functionality of Rasa, but adds more tools to work with.
 
 If you already have a look at the Rasa installation doc, then you will see it **requires Python 3**. Rasa has quite a bit dependency on libraries, so do check your Python version. I will recommand to install any version from 3.7, I had Python 3.7.4 installed and it works fine.
 
