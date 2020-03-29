@@ -116,7 +116,10 @@ After completing the previous step, you will see something like the following im
 
 ![alt text](https://github.com/mahedee/Articles/blob/master/img/git02.png)
 
-Now press the button and make a pull request. Now reviewer can accept or reject the pull request (PR).
+Now press the button and make a pull request. Now reviewer can accept or reject the pull request (PR).  
+You can think the whole workflow as below  
+
+![alt text,20%](https://github.com/mahedee/Articles/blob/master/img/git001.jpg)
 
 **Step 7: Add your change to your forked repository**
 Now, if you want to add your change to your forked repository. Just type the following command. Remember, in this case, your forked repository and original repository may not sync if the PR is not accepted. 
