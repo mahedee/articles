@@ -1,8 +1,8 @@
-# Rasa and chatbots
+# How to develop a chatbot using Rasa
 
  ![IMAGE](../img/rasa_logo.png "Rasa")
 
-Rasa is an open source maching learning platform for building contextual AI assistants and chatbots in text and voice. It is one of most popular framework for building chatbots. Let's start with installing Rasa, here I'm sharing the problems I faced while installing Rasa.
+Rasa is an open source maching learning platform for building contextual AI assistants and chatbots in text and voice. It is one of most popular framework for building chatbots. Let's start with installing Rasa, here I'm sharing the how to install Rasa and the problems I faced while installing Rasa.
 
 
 ## Install Rasa
@@ -92,7 +92,7 @@ This will open up a webpage where you will be able to chat, train and also be ab
 >+ At the end of the code you will find a try-exception function, just comment out the function. Save the file. Run the command again and you are good to go. 
  ![IMAGE](../img/git_solve.PNG "git solve")
 
-After running the command, you might have to agree with their some policies. Then a browser will open up, where you can chat the with bot and also use other tools.
+After running the command, you might have to agree with their some policies. Then a browser will open up, where you can chat with the  bot and also use other tools.
  ![IMAGE](../img/rasa_x.png "git solve")
 
 ##### Congratulation on installing Rasa
