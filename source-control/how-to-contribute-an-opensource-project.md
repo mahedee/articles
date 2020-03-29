@@ -126,3 +126,10 @@ git checkout master
 git merge feature-joining 
 git push origin master
 ```
+**Step 8: Sync forked repository with original repository**  
+If you want to sync your forked repository with original repository at any time. Tyep the following command.
+
+```github
+git pull upstream master 
+git push origin master
+```
