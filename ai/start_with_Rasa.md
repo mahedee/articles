@@ -1,6 +1,6 @@
 # Rasa and chatbots
 
-![alt text](https://github.com/mahedee/Articles/upload/master/img/rasa_logo.png "Rasa")
+![alt text](https://github.com/mahedee/Articles/tree/master/imgrasa_logo.png "Rasa")
 
 Rasa is an open source maching learning platform for building contextual AI assistants and chatbots in text and voice. It is one of most popular framework for building chatbots. Let's start with installing Rasa, here I'm sharing the problems I faced while installing Rasa.
 
