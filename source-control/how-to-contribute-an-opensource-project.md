@@ -109,5 +109,5 @@ git commit -m "complete feature-joining"
 ```
 
 ```github
-git push git push origin feature-joining
+git push origin feature-joining
 ```
