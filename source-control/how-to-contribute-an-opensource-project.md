@@ -92,3 +92,22 @@ instead of
 Mahedee@MahedeePC MINGW64 /d/Projects/Github/OpenCodeFoundation/eSchool (master)
 ```
 
+**Step 5: Work on the new branch and push**  
+Now work on the new branch. After completing your task, just add, commit and push. Before that, you should check is there any change in the upstream. If change occur, just merge it with your local using the following command. 
+
+```github
+git pull --rebase upstream master
+```
+If you get any conflit, you have to resolve it locally. If no conflit occur, type the following command one by one.
+
+```github
+git add .
+```
+
+```github
+git commit -m "complete feture-joining"
+```
+
+```github
+git push git push origin feture-joining
+```
