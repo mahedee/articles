@@ -112,6 +112,9 @@ git commit -m "complete feature-joining"
 git push origin feature-joining
 ```
 **Step 6: Make a pull request**  
-After completing the previous step, you will see something like the following image with a button *"Compare and pull request"*  
+After completing the previous step, you will see something like the following image with a button *"Compare and pull request"* 
+
+![alt text](https://github.com/mahedee/Articles/blob/master/img/git02.png)
+
 Now press the button and make a pull request. Now reviewer can accept or reject the pull request (PR).
 
