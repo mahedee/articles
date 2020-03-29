@@ -105,9 +105,9 @@ git add .
 ```
 
 ```github
-git commit -m "complete feture-joining"
+git commit -m "complete feature-joining"
 ```
 
 ```github
-git push git push origin feture-joining
+git push git push origin feature-joining
 ```
