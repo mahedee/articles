@@ -141,5 +141,5 @@ git branch -d feature-joining
 ```
 If you want to remove this branch from github then type the following command.
 ```github
-git push origin feature-joining 
+git push origin :feature-joining 
 ```
