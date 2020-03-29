@@ -1,4 +1,4 @@
-## How to contribute on an open source project
+# How to contribute on an open source project
 
 **Step 1: Fork the repository on which you want to contribute**  
 For example, I have forked the following repository  
