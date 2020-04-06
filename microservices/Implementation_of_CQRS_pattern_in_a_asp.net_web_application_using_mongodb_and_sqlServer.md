@@ -20,7 +20,7 @@ Prerequisite: [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb
  ```cmd
 mongo
  ```
- create a new database named "BooksDb" manually in MongoDB,paste the command in command promt:
+ create a new database named "BooksDb" manually in MongoDB then paste the following command in command promt:
  ```cmd
  use BooksDb
  ```
@@ -29,7 +29,7 @@ mongo
  
  
  now create a new collection named "Bookss" for BooksDb
- paste the command:
+ paste the following command:
  ```cmd
  db.createCollection('Bookss')
  ```
@@ -63,7 +63,7 @@ db.Bookss.insertMany([{'Name':'Design Patterns','Price':54.93,'Category':'Comput
  ![IMAGE](../img/CQRSReadsiteMongo.PNG)
 
 
-now create a new folder for all model class named "Model". In Model folder create a model class named "Book.cs".
+now create a new folder for all model class named "Model". In Model folder create a new model class named "Book.cs".
 
 Paste the following Code in "Book.cs":
 
@@ -254,7 +254,7 @@ namespace ReadSiteMongo.Services
 ```
 
 
-Now in Controller class create a new controller class named "BooksController.cs".
+Now in Controller folder create a new controller class named "BooksController.cs".
 
 Paste the following code in BooksController.cs :
 
@@ -327,18 +327,18 @@ Now open StartUp.cs class and add the following Code:
 ```
 
 
->List of packages for ReadSiteMongo:
+>List of packages for ReadSiteMongo is given below:
 
 
 ![MongoPackages](../img/CQRSMongoPackages.PNG)
 
 ## Part 2: Write Site
 
-First of all create an ASP.Net Core Api project for write name that project "WriteSiteSQL". SqlServer is used for write database
+First of all create an ASP.Net Api project for the write-Site, name that project "WriteSiteSQL". SqlServer is used for the write-site database
   
 ![](../img/CQRSWriteSiteSQL.PNG)
 
-Now create a new folder for Model class, name that folder "Model",in Model folder create a new model class named "Book.cs".
+Now create a new folder for Model class, name that folder "Model", in Model folder create a new model class named "Book.cs".
 
 Paste the following code in Book.cs class:
 ```C#
@@ -392,7 +392,7 @@ namespace WriteSiteSQL.Model
 }
 
  ```
- Now create a new folder, name it "Command".In Command folder create a database Context class, "CommandContext.cs".
+ Now create a new folder, name it "Command". In Command folder create a database Context class, named "CommandContext.cs".
 
 Paste the following code in CommandContext.cs class:
 ```C#
@@ -412,7 +412,7 @@ namespace WriteSiteSQL.Command
 
 ```
 Open appsettings.json
-Add the following code
+Add the following code:
 
 ```C#
   "ConnectionStrings": {
@@ -489,7 +489,8 @@ namespace WriteSiteSQL.Command
 
 ```
 For Implimenting interface class method, create a new class in Command folder and name that class "BookServices.cs".
-Paste the following code in BookServices.cs class
+Paste the following code in BookServices.cs class:
+
 ```C#
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -578,7 +579,7 @@ public class Sender
             return newBooks;
  ```
 
-Open startup.cs class, Add the following code:
+Open startup.cs class, add the following code:
 ```C#
  public void ConfigureServices(IServiceCollection services)
         {
