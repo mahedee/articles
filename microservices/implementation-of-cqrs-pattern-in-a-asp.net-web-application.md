@@ -274,7 +274,7 @@ Update-Database
  First of all create an ASP.Net Core Api project for write name that project "ReadSite".
   
     
-![](../img/CQRSWritesite.PNG)
+![](../img/CQRSReadsite.PNG)
 
 Now create a new folder for Model class and name that folder "Students". In Students folder create a new model class named "Student.cs".
 
