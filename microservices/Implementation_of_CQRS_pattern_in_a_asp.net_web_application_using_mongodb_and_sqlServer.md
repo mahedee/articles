@@ -9,7 +9,7 @@
 ![IMAGE](../img/CQRS2.png)
 
 ## Step 1: Read Site
-For Read Database, at fisrt learn [MongoDB Basic]() and Commands.
+For Read Database, at first learn [MongoDB Manual](https://docs.mongodb.com/manual/tutorial/).
 
 > ### Confiure MongoDB:
 Prerequisite: [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
@@ -28,7 +28,7 @@ mongo
   A database named BooksDb is created. If the database does exist, its connection is opened for transactions.
  
  
- now create a new collection named "Bookss" for BookDb
+ now create a new collection named "Bookss" for BooksDb
  paste the command:
  ```cmd
  db.createCollection('Bookss')
@@ -54,7 +54,7 @@ db.Bookss.insertMany([{'Name':'Design Patterns','Price':54.93,'Category':'Comput
     ObjectId("5bfd996f7b8e48dc15ff215e")
   ]
 }
- e```
+```
  
  > Create an ASP.Net Api project for ReadSite
   
@@ -63,7 +63,7 @@ db.Bookss.insertMany([{'Name':'Design Patterns','Price':54.93,'Category':'Comput
  ![IMAGE](../img/CQRSReadsiteMongo.PNG)
 
 
-now create a new folder for all model class named "Model" .in Model folder create a model class named "Book.cs".
+now create a new folder for all model class named "Model". In Model folder create a model class named "Book.cs".
 
 Paste the following Code in "Book.cs":
 
@@ -124,7 +124,7 @@ namespace ReadSiteMongo.Model
 
 ```
  For Conecting Database connection Settings, 
- Edit "appsettings.json" file with the following code :
+ Open "appsettings.json" file and add the following code :
 
  ```c#
 
@@ -136,7 +136,7 @@ namespace ReadSiteMongo.Model
 
   ```
 
-  For receiving message from RabbitMQ, create a new folder named "Receiver".In Receiver folder ,create a new class named "Reciver.cs".
+  For receiving message from RabbitMQ, create a new folder named "Receiver". In Receiver folder, create a new class named "Reciver.cs".
    Paste the following Code in "Receiver.cs":
    ```c#
 
@@ -185,7 +185,7 @@ class Receiver
 
 
 ```
-Create a new folder named "Services".in Services folder create a new class named "UpdateService.cs".
+Create a new folder named "Services". In Services folder create a new class named "UpdateService.cs".
 
 Paste the following code in "UpdateService.cs":
 ```c#
@@ -254,7 +254,7 @@ namespace ReadSiteMongo.Services
 ```
 
 
-Now in Controller class create a new contraoller class named "BooksController.cs".
+Now in Controller class create a new controller class named "BooksController.cs".
 
 Paste the following code in BooksController.cs :
 
@@ -303,7 +303,7 @@ namespace ReadSiteMongo.Controllers
 ```
 
 
-Now edit StartUp.cs class with the following Code:
+Now open StartUp.cs class and add the following Code:
 
 ```C#
  public void ConfigureServices(IServiceCollection services)
