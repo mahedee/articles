@@ -20,7 +20,7 @@ As you can see, Read site and Write site are separate services. Both sites consi
  ## Part:1 Write Service
 First of all create an ASP.Net Core Api project for write name that project "WriteSite".
   
-![](../img/CQRSReadsite.PNG)
+![IMAGE](../img/CQRSWritesite.PNG)
 
 Now create a new folder for Model class, name that folder "Students",in Students folder create a new model class named "Student.cs".
 
