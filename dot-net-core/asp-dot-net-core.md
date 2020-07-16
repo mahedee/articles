@@ -1,4 +1,5 @@
 # Articles on ASP.NET Core
+* [Implementation of swagger in a asp.net core web api using in memory database](https://github.com/mahedee/Articles/blob/master/dot-net-core/implement-swagger-in-asp.net-core-web-api-using-in-memory-db.md)
 * [Export file using asp.net core web api](https://github.com/mahedee/Articles/blob/master/dot-net-core/export-file-using-aspnet-core-web-api.md)
 * [A Console Application to access SQL Server Database using .NET Core](https://github.com/mahedee/Articles/blob/master/dot-net-core/a-console-application-to-access-SQL-Server-Database-using-dot-net-Core.md)
 * [How to Create an ASP.NET Core Web API with Entity Framework using My SQL](https://github.com/mahedee/Articles/blob/master/dot-net-core/HowToCreateWebAPIinASP.NETCOrewitMySQL.md)
