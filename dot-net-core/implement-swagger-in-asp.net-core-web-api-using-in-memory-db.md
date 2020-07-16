@@ -312,7 +312,7 @@ public void Configure(IApplicationBuilder app)
 
 **Step 4: Run the application and Check**  
 * Run the application 
-* Browse https://<localhost>:<port>/swagger/index.html
+* Browse ```https://<localhost>:<port>/swagger/index.html```
 
 
 [Download source code](https://github.com/mahedee/code-sample/tree/master/SwaggerInMemory/SMS.Web)
