@@ -22,7 +22,7 @@ This guide explains setting up a production-ready ASP.NET Core environment on an
 * Linux Operating System (16.04 or above)
 * ASP.NET Core SDK 3.1
 * VS Code
-* JSON Viewer (Chorme Extention)
+* JSON Viewer (Chrome Extension)
 
 ### Step 1 . Install Linux Operating System
 
